@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tv_from"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp"
+            android:ellipsize="end"
+            android:maxWidth="140dp"
+            android:singleLine="true"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="160dp"
+            android:layout_marginStart="160dp"
+            android:text="10个小时之前"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_wish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="祝福描述祝福描述祝福描述祝福描述祝福描述祝福描述祝福描述"
+            android:textSize="16sp" />
+    </FrameLayout>
+
+    <View
+        android:layout_width="@dimen/dp_066"
+        android:layout_height="30dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:background="@color/divider_color" />
+
+    <TextView
+        android:id="@+id/tv_status"
+        android:layout_width="67dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="已接收"
+        android:textColor="@color/green"
+        android:textSize="14sp" />
+</LinearLayout>

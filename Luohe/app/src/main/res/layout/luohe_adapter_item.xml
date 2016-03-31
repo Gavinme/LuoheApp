@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:paddingLeft="@dimen/content_margin_hor_view_holder"
+    android:paddingRight="@dimen/content_margin_hor_view_holder">
+
+    <ImageView
+        android:id="@+id/avatar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/default_round_icon" />
+
+    <TextView
+        android:id="@+id/state"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/awarding_icon"
+        android:gravity="center"
+        android:text="悬赏中" />
+
+    <TextView
+        android:id="@+id/name"
+        style="@style/font_title_blue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@id/avatar"
+        android:drawableLeft="@drawable/ic_diamond"
+        android:drawablePadding="5dp"
+        android:singleLine="true"
+        android:text="@string/abc_action_bar_home_description" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/avatar"
+        android:singleLine="true"
+        android:text="@string/tiem_1s"
+        android:textColor="@color/time_color"
+        android:textSize="15sp" />
+
+    <View
+        android:id="@+id/divider"
+        style="@style/divider_style_hor"
+        android:layout_below="@id/avatar"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/font_title_black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/divider"
+        android:layout_marginTop="10dp"
+        android:singleLine="true"
+        android:text="@string/common_title" />
+
+    <TextView
+        android:id="@+id/desc"
+        style="@style/font_desc_black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_marginTop="10dp"
+        android:text="@string/common_desc" />
+
+    <TextView
+        android:id="@+id/commit"
+        style="@style/font_desc_black"
+        android:layout_width="match_parent"
+        android:layout_height="26dp"
+        android:layout_below="@id/desc"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rect_blue"
+        android:gravity="center"
+        android:text="发表主题"
+        android:textColor="@color/white" />
+
+</RelativeLayout>

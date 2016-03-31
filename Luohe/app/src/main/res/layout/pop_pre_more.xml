@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="130dp"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/collect"
+        style="@style/font_desc_black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/icon_collect"
+        android:drawablePadding="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="5dp"
+        android:text="@string/collect"
+        android:textSize="16sp" />
+
+    <View
+        style="@style/divider_style_hor"
+        android:layout_width="130dp"
+        android:layout_height="1px" />
+
+    <TextView
+        android:id="@+id/send_wish"
+        style="@style/font_desc_black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/icon_sendwish"
+        android:drawablePadding="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="5dp"
+        android:text="@string/send_wish"
+        android:textSize="16sp" />
+
+    <View
+        style="@style/divider_style_hor"
+        android:layout_width="130dp"
+        android:layout_height="1px" />
+
+
+    <TextView
+        style="@style/font_desc_black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/icon_report"
+        android:drawablePadding="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="5dp"
+        android:text="@string/report"
+        android:textSize="16sp" />
+
+    <View
+        style="@style/divider_style_hor"
+        android:layout_width="130dp"
+        android:layout_height="1px" />
+
+    <TextView
+        android:id="@+id/report"
+        style="@style/font_desc_black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/icon_edit"
+        android:drawablePadding="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="5dp"
+        android:text="@string/edit"
+        android:textSize="16sp" />
+
+    <View
+        style="@style/divider_style_hor"
+        android:layout_width="130dp"
+        android:layout_height="1px" />
+
+    <TextView
+        android:id="@+id/delete"
+        style="@style/font_desc_black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/icon_delete"
+        android:drawablePadding="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="5dp"
+        android:text="@string/delete"
+        android:textSize="16sp" />
+
+
+</LinearLayout>

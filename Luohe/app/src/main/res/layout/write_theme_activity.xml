@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    android:paddingTop="7dp">
+
+    <EditText
+        android:id="@+id/edit_title"
+        style="@style/font_title_black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/rect_white_round"
+        android:gravity="center_vertical"
+        android:hint="@string/hint_write_themtitle"
+        android:padding="5dp"
+        android:textColorHint="@color/time_color" />
+
+    <EditText
+        style="@style/font_title_black"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_layout"
+        android:layout_below="@+id/edit_title"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/rect_white_round"
+        android:gravity="start"
+        android:hint="@string/write_them_contenthint"
+        android:padding="5dp" />
+
+    <LinearLayout
+        android:id="@+id/bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_money" />
+
+        <EditText
+            android:layout_width="80dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/rect_white_round"
+            android:gravity="start"
+            android:hint="输入才值" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <CheckBox
+            style="@style/font_time_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="匿名发表" />
+
+    </LinearLayout>
+
+</RelativeLayout>

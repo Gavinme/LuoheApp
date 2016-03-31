@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <!-- 中间内容 -->
+
+    <FrameLayout
+        android:id="@+id/fragment_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/tab_widget"
+        android:layout_weight="1" />
+
+    <!-- 底部按钮 -->
+
+    <TabWidget
+        android:id="@+id/tab_widget"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:orientation="horizontal" />
+
+    <View
+        android:id="@+id/action_divider"
+        style="@style/divider_style_hor"
+        android:layout_above="@+id/tab_widget" />
+
+</RelativeLayout>

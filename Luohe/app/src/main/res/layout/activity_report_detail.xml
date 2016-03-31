@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <TextView
+        style="@style/font_time_grey"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/white"
+        android:drawableRight="@drawable/right_arrow"
+        android:gravity="start|center_vertical"
+        android:paddingLeft="8dp"
+        android:text="广告" />
+
+    <EditText
+        style="@style/font_title_black"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_layout"
+        android:layout_below="@+id/edit_title"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/rect_white_round"
+        android:gravity="start"
+        android:hint="@string/write_them_please"
+        android:padding="5dp" />
+
+</LinearLayout>

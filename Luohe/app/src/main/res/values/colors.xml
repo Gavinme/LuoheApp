@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#1c95d1</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="app_grey_color">#eeeeee</color>
+    <color name="app_main_blue">#1c95d1</color>
+
+    <color name="font_bold_black">#666666</color>
+    <color name="font_light_black">#999999</color>
+    <color name="font_light_black_small">#aeaeae</color>
+    <color name="app_main_yellow">#fdd922</color>
+    <color name="app_main_pink">#fb528e</color>
+
+    <color name="divider_color">#adadad</color>
+    <color name="white">#ffffff</color>
+
+    <color name="time_color">#aeaeae</color>
+    <color name="person_color">#9d9d9d</color>
+
+    <color name="color_0">#ff6666</color>
+    <color name="color_1">#ccccff</color>
+    <color name="color_2">#9999cc</color>
+    <color name="color_3">#ffffcc</color>
+    <color name="color_4">#cccc33</color>
+    <color name="color_5">#cc9966</color>
+    <color name="color_6">#cccccc</color>
+    <color name="color_7">#cccc99</color>
+    <color name="color_8">#cc9966</color>
+    <color name="color_9">#ff99cc</color>
+
+    <color name="red">#FFC93437</color>
+    <color name="blue">#FF375BF1</color>
+    <color name="yellow">#FFF7D23E</color>
+    <color name="green">#FF34A350</color>
+    <color name="text_red">#d00000</color>
+    <color name="color_ff">#F0F0F0</color>
+    <color name="color_00">#8A000000</color>
+    <color name="color_ff0303">#FF0303</color>
+    <color name="color_ffc208">#FFC208</color>
+
+</resources>

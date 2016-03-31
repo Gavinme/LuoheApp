@@ -1,0 +1,97 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/app_grey_color</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:textColorHint">@color/time_color</item>
+    </style>
+
+    <style name="TranslucentTheme" parent="@style/AppTheme">
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="NotTranslucentTheme" parent="@style/AppTheme">
+        <item name="android:windowIsTranslucent">false</item>
+    </style>
+
+
+    <style name="SwipeBackLayout">
+        <item name="edge_size">50dip</item>
+        <item name="shadow_left">@drawable/shadow_left</item>
+        <item name="shadow_right">@drawable/shadow_right</item>
+        <item name="shadow_bottom">@drawable/shadow_bottom</item>
+    </style>
+
+    <style name="font_title_blue">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/app_main_blue</item>
+    </style>
+
+    <style name="font_title_black">
+        <item name="android:textColor">@color/font_bold_black</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="font_desc_black">
+        <item name="android:textColor">@color/font_light_black</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="font_time_grey">
+        <item name="android:textColor">@color/time_color</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="font_person_grey">
+        <item name="android:textColor">@color/person_color</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="divider_style_hor">
+        <item name="android:background">@color/divider_color</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="divider_style_ver">
+
+        <item name="android:background">@color/divider_color</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">1px</item>
+    </style>
+
+    <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
+        <!--<item name="tabMaxWidth">@dimen/tab_max_width</item>-->
+        <item name="tabIndicatorColor">@color/app_main_blue</item>
+        <item name="android:textColor">@color/time_color</item>
+        <item name="tabIndicatorHeight">0dp</item>
+        <item name="tabPaddingStart">12dp</item>
+        <item name="tabPaddingEnd">12dp</item>
+        <item name="tabTextAppearance">@style/CustomTabTextAppearance</item>
+        <item name="tabBackground">@drawable/back_tab_layout</item>
+        <item name="tabSelectedTextColor">@color/app_main_blue</item>
+    </style>
+
+    <style name="CustomTabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textColor">@color/time_color</item>
+        <item name="android:textSize">16sp</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="DialogWindowAnim" mce_bogus="1" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/choose_login_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/choose_login_bottom_out</item>
+    </style>
+
+    <style name="Dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:padding">0dp</item>
+    </style>
+</resources>

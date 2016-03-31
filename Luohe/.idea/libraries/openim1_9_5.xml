@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="openim1.9.5">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/openimSDK/libs/openim1.9.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

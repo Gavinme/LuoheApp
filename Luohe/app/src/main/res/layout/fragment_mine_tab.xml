@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/avatar"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/default_round_icon" />
+
+            <ImageView
+                android:id="@+id/sexy_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/avatar"
+                android:layout_alignRight="@+id/avatar"
+                android:src="@drawable/icon_sexy" />
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/font_title_black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/avatar"
+                android:layout_toRightOf="@id/avatar"
+                android:singleLine="true"
+                android:text="张三三" />
+
+            <TextView
+                android:id="@+id/address_time"
+                style="@style/font_person_grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/avatar"
+                android:singleLine="true"
+                android:text="1990-1-1 | 北京" />
+
+            <TextView
+                android:id="@+id/desc"
+                style="@style/font_person_grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/avatar"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/avatar"
+                android:singleLine="true"
+                android:text="@string/common_desc" />
+
+        </RelativeLayout>
+
+        <View
+            style="@style/divider_style_hor"
+            android:layout_marginTop="20dp" />
+
+        <com.luohe.android.luohe.find.FindItemView
+            android:id="@+id/about_me"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <View style="@style/divider_style_hor" />
+
+        <View
+            style="@style/divider_style_hor"
+            android:layout_marginTop="20dp" />
+
+        <com.luohe.android.luohe.find.FindItemView
+            android:id="@+id/luohe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <View style="@style/divider_style_hor" />
+
+
+        <com.luohe.android.luohe.find.FindItemView
+            android:id="@+id/theme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <View style="@style/divider_style_hor" />
+
+
+        <com.luohe.android.luohe.find.FindItemView
+            android:id="@+id/wenfeng"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <View style="@style/divider_style_hor" />
+
+        <View
+            style="@style/divider_style_hor"
+            android:layout_marginTop="20dp" />
+
+        <com.luohe.android.luohe.find.FindItemView
+            android:id="@+id/share"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <View style="@style/divider_style_hor" />
+
+        <com.luohe.android.luohe.find.FindItemView
+            android:id="@+id/collect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <View style="@style/divider_style_hor" />
+
+        <View
+            style="@style/divider_style_hor"
+            android:layout_marginTop="20dp" />
+
+        <com.luohe.android.luohe.find.FindItemView
+            android:id="@+id/setting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <View style="@style/divider_style_hor" />
+
+
+    </LinearLayout>
+</ScrollView>

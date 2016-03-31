@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_marginBottom="1dip"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/img_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:id="@+id/tv_redtip_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@+id/img_icon"
+                android:layout_marginRight="-8dip"
+                android:layout_marginTop="5dip"
+                android:background="@drawable/icon_unreadcount_red_bg"
+                android:gravity="center"
+                android:textSize="10dip"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/img_red_tip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@+id/img_icon"
+                android:layout_marginTop="7dip"
+                android:background="@drawable/wd_tishidian"
+                android:gravity="center"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dip"
+            android:layout_marginTop="1dip"
+            android:textSize="12dip" />
+    </LinearLayout>
+
+</LinearLayout>

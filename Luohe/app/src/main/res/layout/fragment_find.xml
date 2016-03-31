@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            style="@style/divider_style_hor"
+            android:layout_marginTop="20dp" />
+
+        <com.luohe.android.luohe.find.FindItemView
+            android:id="@+id/react_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <View style="@style/divider_style_hor" />
+
+        <View
+            style="@style/divider_style_hor"
+            android:layout_marginTop="20dp" />
+
+        <com.luohe.android.luohe.find.FindItemView
+            android:id="@+id/wish_pool_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <View style="@style/divider_style_hor" />
+
+        <com.luohe.android.luohe.find.FindItemView
+            android:id="@+id/rank_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <View style="@style/divider_style_hor" />
+
+        <com.luohe.android.luohe.find.FindItemView
+            android:id="@+id/system_msg_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <View style="@style/divider_style_hor" />
+
+    </LinearLayout>
+</ScrollView>

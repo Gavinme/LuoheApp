@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tv_rank"
+        android:layout_width="49dp"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_rank1"
+        android:drawablePadding="3dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:text="1"
+        android:textColor="@color/color_00"
+        android:textSize="16sp" />
+
+    <View
+        android:layout_width="@dimen/dp_066"
+        android:layout_height="27dp"
+        android:background="@color/divider_color" />
+
+    <ImageView
+        android:id="@+id/iv_avatar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/ic_avatar_temp"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tv_author"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginStart="2dp"
+        android:layout_weight="1"
+        android:drawableLeft="@drawable/ic_diamond"
+        android:drawablePadding="2dp"
+        android:drawableStart="@drawable/ic_diamond"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="创者"
+        android:textColor="@color/font_bold_black"
+        android:textSize="16sp" />
+
+    <View
+        android:layout_width="@dimen/dp_066"
+        android:layout_height="27dp"
+        android:background="@color/divider_color" />
+
+    <TextView
+        android:id="@+id/tv_value"
+        android:layout_width="66dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="5326"
+        android:textColor="@color/color_ffc208"
+        android:textSize="16sp" />
+
+    <View
+        android:layout_width="@dimen/dp_066"
+        android:layout_height="27dp"
+        android:background="@color/divider_color" />
+
+    <TextView
+        android:id="@+id/tv_value_inc"
+        android:layout_width="95dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="326"
+        android:textColor="@color/color_ff0303"
+        android:textSize="16sp" />
+</LinearLayout>

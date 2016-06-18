@@ -11,7 +11,7 @@ import com.luohe.android.luohe.base.AppCompatActivity;
 public class NickNameSetActivity extends AppCompatActivity {
     @Override
     protected void init(Bundle savedInstanceState) {
-        getTitlebar().setTitle("落和令昵称");
+        getTitlebar().setTitle("落和昵称");
         getTitlebar().setDefauleBackBtn();
     }
 

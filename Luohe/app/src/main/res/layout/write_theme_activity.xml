@@ -19,6 +19,7 @@
         android:textColorHint="@color/time_color" />
 
     <EditText
+        android:id="@+id/edit_des"
         style="@style/font_title_black"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -45,12 +46,15 @@
             android:src="@drawable/icon_money" />
 
         <EditText
+            android:id="@+id/tv_count"
             android:layout_width="80dp"
             android:layout_height="25dp"
             android:layout_marginLeft="5dp"
             android:background="@drawable/rect_white_round"
             android:gravity="start"
-            android:hint="输入才值" />
+            android:hint="输入才值"
+            android:inputType="number"
+            android:maxLength="8" />
 
         <View
             android:layout_width="0dp"
@@ -58,6 +62,8 @@
             android:layout_weight="1" />
 
         <CheckBox
+            android:button="@drawable/check_box_selector"
+            android:id="@+id/tv_anony_name"
             style="@style/font_time_grey"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

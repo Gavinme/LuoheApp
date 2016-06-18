@@ -497,7 +497,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener {
 
         @Override
         public int getBackground() {
-            return R.drawable.rect_yellow_round;
+			return 0;
         }
     }
 

@@ -10,9 +10,10 @@
     <dimen name="font_big">16sp</dimen>
     <dimen name="font_middle">12sp</dimen>
     <dimen name="font_small">9sp</dimen>
-
+    <dimen name="edit_padding_top">0dp</dimen>
     <dimen name="dp_066">0.66dp</dimen>
     <dimen name="dp_4">4dp</dimen>
+    <dimen name="dp_5">5dp</dimen>
     <dimen name="dp_10">10dp</dimen>
     <dimen name="dp_14">14dp</dimen>
     <dimen name="dp_22">22dp</dimen>
@@ -32,4 +33,9 @@
     <dimen name="tag_vertical_spacing">6.0dip</dimen>
     <dimen name="common_margin">12.0dip</dimen>
     <dimen name="common_margin_10">10.0dip</dimen>
+
+    <dimen name="TextSizeLarge">36sp</dimen>
+    <dimen name="ItemSpaceLarge">12dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
 </resources>

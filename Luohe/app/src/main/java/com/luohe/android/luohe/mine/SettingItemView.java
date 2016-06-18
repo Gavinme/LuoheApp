@@ -31,4 +31,5 @@ public class SettingItemView extends FindItemView {
         this.setRightTipVisiable(GONE);
         this.setTipcountVisiable(View.GONE);
     }
+
 }

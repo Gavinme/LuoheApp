@@ -1,8 +1,6 @@
 package com.luohe.android.luohe.mine;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -12,161 +10,212 @@ import com.luohe.android.luohe.R;
 import com.luohe.android.luohe.base.BaseRecyclerViewAdapter;
 import com.luohe.android.luohe.base.BaseRefreshListFragment;
 import com.luohe.android.luohe.base.BindLayout;
+import com.luohe.android.luohe.common.eventbus.EventBusControl;
+import com.luohe.android.luohe.luohe.LuoheListFragment;
 import com.luohe.android.luohe.luohe.WriteThemeActivity;
+import com.luohe.android.luohe.net.data.Result;
+import com.luohe.android.luohe.net.http.ApiLoader;
+import com.luohe.android.luohe.net.http.CommonSubscriber;
+import com.luohe.android.luohe.net.model.LuoheWrapBean;
+import com.luohe.android.luohe.recommond.CommentListActivity;
+import com.luohe.android.luohe.utils.ImageUtils;
 
-import java.io.Serializable;
+import org.simple.eventbus.Subscriber;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by GanQuan on 16/3/27.
  */
-public class MyLuoheListFragment extends BaseRefreshListFragment<MyLuoheListFragment.luoheBean> {
-    @Override
-    protected void onInit(View view, RecyclerView recyclerView) {
-        super.onInit(view, recyclerView);
-        getTitleBar().setTitle(getResources().getString(R.string.my_luohe));
-        mHanlder.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                refreshData();
-            }
-        }, 1000);
+public class MyLuoheListFragment extends BaseRefreshListFragment<LuoheWrapBean> {
+	@Override
+	protected void onInit(View view, RecyclerView recyclerView) {
+		super.onInit(view, recyclerView);
+		getTitleBar().setTitle(getResources().getString(R.string.my_luohe));
+		refreshData();
+		getLoadingHelper().setEnable(true);
+		getLoadingHelper().showLoadingView();
 
-    }
+	}
 
-    private List<luoheBean> createData() {
-        List<luoheBean> list = new ArrayList<>();
-        for (int i = 0; i < 15; i++) {
-            if (i % 3 == 0) {
-                list.add(new luoheBean(luoheBean.type_luohe));
-            } else {
-                list.add(new luoheBean(luoheBean.type_Inner));
-            }
-        }
-        return list;
-    }
+	@Override
+	protected Class<? extends BaseRecyclerViewAdapter<LuoheWrapBean>> onGetAdapterType() {
+		return LuoheListFragment.LuoheListAdapter.class;
+	}
 
-    @Override
-    protected Class<? extends BaseRecyclerViewAdapter<luoheBean>> onGetAdapterType() {
-        return LuoheListAdapter.class;
-    }
+	public static class MyluoheAdapter extends BaseRecyclerViewAdapter<LuoheWrapBean> {
 
-    @Override
-    protected void onPullDown(AdapterManger<luoheBean> mAdapterManger) {
-        mAdapterManger.initListToAdapter(createData());
-        mHanlder.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                notifyLoadComplete(0);
-            }
-        }, 1000);
+		public MyluoheAdapter(Context context) {
+			super(context);
+		}
 
-    }
+		@Override
+		public int getItemViewType(int position) {
+			return getItemBean(position).type;
+		}
 
-    Handler mHanlder = new Handler();
+		@Override
+		protected void onBindVHLayoutId(List<Class<?>> viewBundles) {
+			viewBundles.add(ViewHolderItem.class);
+			viewBundles.add(VHInner.class);
+		}
 
-    @Override
-    protected void onLoadMore(final AdapterManger<luoheBean> adapter) {
+		@BindLayout(id = R.layout.luohe_adapter_item)
+		static class ViewHolderItem extends BaseViewHolder<LuoheWrapBean> {
+			@Bind(R.id.avatar)
+			ImageView avatar;
+			@Bind(R.id.state)
+			TextView state;
+			@Bind(R.id.name)
+			TextView name;
+			@Bind(R.id.time)
+			TextView time;
+			@Bind(R.id.divider)
+			View divider;
+			@Bind(R.id.title)
+			TextView title;
+			@Bind(R.id.desc)
+			TextView desc;
+			@Bind(R.id.commit)
+			TextView commit;
+			@Bind(R.id.luohe_divider)
+			View luohe_divider;
 
-        mHanlder.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                adapter.addListToAdapter(createData());
-                notifyLoadComplete(0);
-            }
-        }, 1000);
+			public ViewHolderItem(View itemView) {
+				super(itemView);
+			}
 
-    }
+			@Override
+			protected void bindView(final LuoheWrapBean bean, int position, final Context context) {
+				if (position == 0) {
+					luohe_divider.setVisibility(View.GONE);
 
-    public static class LuoheListAdapter extends BaseRecyclerViewAdapter<luoheBean> {
+				} else {
+					luohe_divider.setVisibility(View.VISIBLE);
+				}
+				commit.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
 
+						context.startActivity(WriteThemeActivity.getStartIntent(context, bean.id));
 
-        public LuoheListAdapter(Context context) {
-            super(context);
-        }
+					}
+				});
+				commit.setVisibility(View.GONE);
 
-        @Override
-        public int getItemViewType(int position) {
-            return getItemBean(position).type;
-        }
+				ImageUtils.displayRoundImage(bean.headUrl, avatar);
+				state.setText(bean.getAwardTitle() + "");
+				name.setText(bean.userName);
+				time.setText(bean.getTime());
+				title.setText(bean.fallOrderName);
+				desc.setText(bean.fallOrderDes);
 
-        @Override
-        protected void onBindVHLayoutId(List<Class<?>> viewBundles) {
-            viewBundles.add(ViewHolderItem.class);
-            viewBundles.add(VHInner.class);
-//            viewBundles.add(new ViewBundle(R.layout.luohe_adapter_item, ViewHolderItem.class));
-//            viewBundles.add(new ViewBundle(R.layout.luohe_inner_item, VHInner.class));
-        }
+			}
 
-        @BindLayout(id = R.layout.luohe_adapter_item)
-        static class ViewHolderItem extends BaseViewHolder<luoheBean> {
-            @Bind(R.id.avatar)
-            ImageView avatar;
-            @Bind(R.id.state)
-            TextView state;
-            @Bind(R.id.name)
-            TextView name;
-            @Bind(R.id.time)
-            TextView time;
-            @Bind(R.id.divider)
-            View divider;
-            @Bind(R.id.title)
-            TextView title;
-            @Bind(R.id.desc)
-            TextView desc;
-            @Bind(R.id.commit)
-            TextView commit;
+		}
 
+		@BindLayout(id = R.layout.luohe_inner_item)
+		static class VHInner extends BaseViewHolder<LuoheWrapBean> {
+			@Bind(R.id.avatar)
+			ImageView avatar;
+			@Bind(R.id.name)
+			TextView name;
+			@Bind(R.id.title)
+			TextView title;
+			@Bind(R.id.desc)
+			TextView desc;
+			@Bind(R.id.tv_time)
+			TextView tv_time;
+			@Bind(R.id.tv_award)
+			TextView tv_award;
+			@Bind(R.id.tv_comment)
+			TextView tv_comment;
+			@Bind(R.id.tv_coin)
+			TextView tvCoin;
+			@Bind(R.id.divider)
+			View divider;
+			@Bind(R.id.left_icon)
+			TextView leftIcon;
 
-            public ViewHolderItem(View itemView) {
-                super(itemView);
-            }
+			public VHInner(View itemView) {
+				super(itemView);
+			}
 
-            @Override
-            protected void bindView(luoheBean bean, int position, final Context context) {
+			@Override
+			protected void bindView(final LuoheWrapBean bean, int position, final Context context) {
+				final LuoheWrapBean.SubjectBean subjectBean = bean.subjectBean;
+				loadRoundImagUrl(avatar, subjectBean.headUrl);
+				name.setText(subjectBean.userName);
+				title.setText(subjectBean.titleName);
+				desc.setText(subjectBean.titleDes);
+				tvCoin.setText(subjectBean.artValue + "");
+				tv_time.setText(subjectBean.getTime());
+				tv_comment.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						context.startActivity(CommentListActivity.getStartIntent(context, subjectBean.titleId));
+					}
+				});
+				if (subjectBean.pos == 0) {
+					leftIcon.setText("必");
+					leftIcon.setBackgroundResource(R.drawable.rect_blue_bound);
+				} else {
+					leftIcon.setText("");
+					leftIcon.setBackgroundResource(R.drawable.luohe_rank_left);
+				}
 
-                commit.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent it
-                                = new Intent(context, WriteThemeActivity.class);
-                        context.startActivity(it);
-                    }
-                });
+			}
+		}
 
-            }
+	}
 
+	@Subscriber(tag = EventBusControl.REFRESH_MY_LUOHE)
+	public void onEvent(Object object) {
+		refreshData();
+	}
 
-        }
+	private List<LuoheWrapBean> handlerList(List<LuoheWrapBean> result) {
 
-        @BindLayout(id = R.layout.luohe_inner_item)
-        static class VHInner extends BaseViewHolder<luoheBean> {
+		List<LuoheWrapBean> list = new ArrayList<>();
+		for (LuoheWrapBean luoheWrapBean : result) {
+			list.add(luoheWrapBean);
+			if (luoheWrapBean.getTitles(luoheWrapBean.userId) != null) {
+				list.addAll(luoheWrapBean.getTitles(luoheWrapBean.userId));
+			}
+		}
+		return list;
+	}
 
+	@Override
+	protected void onPullDown(final AdapterManger<LuoheWrapBean> mAdapterManger) {
+		getLoadingHelper().showLoadingView();
+		ApiLoader.getApiService().myfallOrder().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+				.subscribe(new CommonSubscriber<Result<List<LuoheWrapBean>>>(getActivity()) {
+					@Override
+					public void onSuccess(Result<List<LuoheWrapBean>> listResult) {
+						if (listResult != null && listResult.getResult() != null) {
+							mAdapterManger.initListToAdapter(handlerList(listResult.getResult()));
+						}
 
-            public VHInner(View itemView) {
-                super(itemView);
-            }
+						getLoadingHelper().showContentView();
+						getLoadingHelper().setEnable(false);
+					}
+				}.onError(new CommonSubscriber.ErrorHandler() {
+					@Override
+					public void onError(Throwable e) {
+						getLoadingHelper().showNetworkError();
+					}
+				}));
+	}
 
-            @Override
-            protected void bindView(luoheBean bean, int position, Context context) {
+	@Override
+	protected void onLoadMore(final AdapterManger<LuoheWrapBean> adapter) {
 
-            }
-        }
+	}
 
-    }
-
-    public static class luoheBean implements Serializable {
-        public static final int type_luohe = 0;
-        public static final int type_Inner = 1;
-
-        public luoheBean(int type) {
-            this.type = type;
-        }
-
-        public int type;
-
-    }
 }

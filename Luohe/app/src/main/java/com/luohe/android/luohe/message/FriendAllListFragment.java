@@ -1,23 +1,35 @@
 package com.luohe.android.luohe.message;
 
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.luohe.android.luohe.R;
 import com.luohe.android.luohe.base.BaseFragment;
+import com.luohe.android.luohe.net.data.Result;
+import com.luohe.android.luohe.net.http.ApiLoader;
+import com.luohe.android.luohe.net.http.CommonSubscriber;
+import com.luohe.android.luohe.net.model.AttenBean;
+import com.luohe.android.luohe.utils.CharacterParser;
 import com.luohe.android.luohe.view.SideBar;
 import com.luohe.android.luohe.view.stickyheadersrecyclerview.DividerDecoration;
 import com.luohe.android.luohe.view.stickyheadersrecyclerview.RecyclerArrayAdapter;
 import com.luohe.android.luohe.view.stickyheadersrecyclerview.StickyRecyclerHeadersAdapter;
 import com.luohe.android.luohe.view.stickyheadersrecyclerview.StickyRecyclerHeadersDecoration;
+import com.nostra13.universalimageloader.core.ImageLoader;
+
+import java.util.List;
 
 import butterknife.Bind;
 
 public class FriendAllListFragment extends BaseFragment {
+    @Bind(R.id.refresh_layout)
+    SwipeRefreshLayout refreshLayout;
     @Bind(R.id.recycler_view)
     RecyclerView mRecycleView;
     @Bind(R.id.side_bar)
@@ -60,14 +72,55 @@ public class FriendAllListFragment extends BaseFragment {
                 mLayoutManager.scrollToPositionWithOffset(mAdapter.getPositionFromId(s), 0);
             }
         });
-        getAllFriends();
+        initLoadingHelper(refreshLayout);
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getAllFriends();
+            }
+        });
+        refreshLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                getAllFriends();
+            }
+        }, 200);
     }
 
     private void getAllFriends() {
+        refreshLayout.setRefreshing(true);
+        ApiLoader.getApiService().attenList(1, 4, 0).subscribeOn(getNewThread())
+                .observeOn(getMainThread()).subscribe(new CommonSubscriber<Result<List<AttenBean>>>(getActivity()) {
+            @Override
+            public void onSuccess(Result<List<AttenBean>> listResult) {
+                if (listResult != null && listResult.getResult() != null) {
+                    if (listResult.getResult().size() != 0) {
+                        getLoadingHelper().showContentView();
+                        mAdapter.clear();
+                        mAdapter.addAll(listResult.getResult());
+                        mAdapter.notifyDataSetChanged();
+                    } else {
+                        getLoadingHelper().showDefaultEmptyView();
+                    }
+                } else {
+                    getLoadingHelper().showNetworkError();
 
+                }
+                refreshLayout.setRefreshing(false);
+
+            }
+
+        }.onError(new CommonSubscriber.ErrorHandler() {
+            @Override
+            public void onError(Throwable e) {
+                getLoadingHelper().showNetworkError();
+                refreshLayout.setRefreshing(false);
+
+            }
+        }));
     }
 
-    private class AllFriendsAdapter extends RecyclerArrayAdapter<Object, RecyclerView.ViewHolder>
+    private class AllFriendsAdapter extends RecyclerArrayAdapter<AttenBean, RecyclerView.ViewHolder>
             implements StickyRecyclerHeadersAdapter<RecyclerView.ViewHolder> {
 
         @Override
@@ -86,15 +139,18 @@ public class FriendAllListFragment extends BaseFragment {
 
         private void onBindUserViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
             TextView textView = (TextView) viewHolder.itemView.findViewById(R.id.tv_name);
+            ImageView imageView = (ImageView) viewHolder.itemView.findViewById(R.id.iv_avatar);
+            textView.setText(getItem(i).nickName);
+            ImageLoader.getInstance().displayImage(getItem(i).headUrl, imageView);
         }
 
         private String getHeaderString(int position) {
-//            if (position >= getItemCount())
-            return "";
-//            String id = CharacterParser.getInstance().getSpelling(((User) getItem(position)).getNickname()).substring(0, 1).toUpperCase();
-//            if (!id.matches("[A-Z]"))
-//                id = "#";
-//            return id;
+            if (position >= getItemCount())
+                return "";
+            String id = CharacterParser.getInstance().getSpelling(getItem(position).nickName).substring(0, 1).toUpperCase();
+            if (!id.matches("[A-Z]"))
+                id = "#";
+            return id;
         }
 
         @Override

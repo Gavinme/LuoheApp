@@ -58,5 +58,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             super(view);
             mTextView = view;
         }
+
+
     }
 }

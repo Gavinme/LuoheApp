@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View style="@style/divider_style_hor" />
+
+    <View
+        style="@style/divider_style_hor"
+        android:layout_marginTop="20dp" />
+
+    <ScrollView
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="21dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@color/white">
+
+                <ImageView
+                    android:id="@+id/avatar"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/default_round_icon" />
+
+                <ImageView
+                    android:id="@+id/sexy_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/avatar"
+                    android:layout_alignRight="@+id/avatar"
+                    android:src="@drawable/icon_sexy" />
+
+                <TextView
+                    android:id="@+id/name"
+                    style="@style/font_title_black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/avatar"
+                    android:layout_toRightOf="@id/avatar"
+                    android:drawablePadding="5dp"
+                    android:drawableRight="@drawable/ic_diamond"
+                    android:singleLine="true" />
+
+                <TextView
+                    android:id="@+id/address_time"
+                    style="@style/font_person_grey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/avatar"
+                    android:singleLine="true" />
+
+                <TextView
+                    android:id="@+id/desc"
+                    style="@style/font_person_grey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/avatar"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/avatar"
+                    android:singleLine="true" />
+
+            </RelativeLayout>
+
+            <View style="@style/divider_style_hor" />
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/white">
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/attention"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="+关注" />
+
+                    <TextView
+                        style="@style/divider_style_hor"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent" />
+
+                    <TextView
+                        android:id="@+id/chat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="聊天" />
+
+                    <TextView
+                        style="@style/divider_style_hor"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent" />
+
+                    <TextView
+                        android:id="@+id/send_wish"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="发祝愿" />
+
+                </TableRow>
+            </TableLayout>
+
+            <View style="@style/divider_style_hor" />
+
+            <View
+                style="@style/divider_style_hor"
+                android:layout_marginTop="20dp" />
+
+            <com.luohe.android.luohe.find.FindItemView
+                android:id="@+id/about_me"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View style="@style/divider_style_hor" />
+
+            <View
+                style="@style/divider_style_hor"
+                android:layout_marginTop="20dp" />
+
+            <com.luohe.android.luohe.find.FindItemView
+                android:id="@+id/luohe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View style="@style/divider_style_hor" />
+
+
+            <com.luohe.android.luohe.find.FindItemView
+                android:id="@+id/theme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View style="@style/divider_style_hor" />
+
+
+            <com.luohe.android.luohe.find.FindItemView
+                android:id="@+id/wenfeng"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View style="@style/divider_style_hor" />
+
+            <View
+                style="@style/divider_style_hor"
+                android:layout_marginTop="20dp" />
+
+            <com.luohe.android.luohe.find.FindItemView
+                android:id="@+id/share"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>
+

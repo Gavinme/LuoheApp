@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:zhou_RichText="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -14,17 +15,20 @@
         android:paddingRight="20dp">
 
         <ImageView
+            android:id="@+id/img_avatar"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/icon_tab_redian" />
 
         <TextView
+            android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
             android:text="name" />
 
         <TextView
+            android:id="@+id/tv_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="end"
@@ -36,9 +40,10 @@
         android:layout_below="@+id/head_layout" />
 
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottom_layout"
+        android:layout_above="@+id/ll_layout"
         android:layout_marginBottom="1dp"
         android:layout_marginTop="50dp"
         android:orientation="vertical"
@@ -60,10 +65,49 @@
                 android:id="@+id/content"
                 style="@style/font_desc_black"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="contentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontent" />
+                android:layout_height="wrap_content" />
+
 
         </ScrollView>
+    </LinearLayout>
+
+    <View
+        style="@style/divider_style_hor"
+        android:layout_above="@+id/ll_layout" />
+
+    <LinearLayout
+        android:id="@+id/ll_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bottom_layout"
+        android:orientation="horizontal"
+        android:paddingBottom="15dp"
+        android:paddingLeft="35dp"
+        android:paddingTop="15dp">
+
+        <ImageView
+            android:id="@+id/iv_like"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/like_icon" />
+
+        <TextView
+            android:id="@+id/tv_like_count"
+            style="@style/font_desc_black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:text="123" />
+
+        <TextView
+            android:id="@+id/tv_read_count"
+            style="@style/font_time_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="123" />
+
+
     </LinearLayout>
 
     <View

@@ -7,7 +7,7 @@
 
     <include layout="@layout/include_common_title" />
 
-    <EditText
+    <TextView
         android:id="@+id/edit_to"
         android:layout_width="match_parent"
         android:layout_height="30dp"
@@ -63,6 +63,7 @@
             android:background="@drawable/rect_white_round"
             android:gravity="center_vertical"
             android:hint="输入才值"
+            android:inputType="number"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:textSize="15sp"
@@ -73,12 +74,12 @@
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
-        <TextView
+        <CheckBox
+            android:id="@+id/ck_anonymous"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:drawableLeft="@drawable/ic_anonymous"
+            android:button="@drawable/check_box_selector"
             android:drawablePadding="5dp"
-            android:drawableStart="@drawable/ic_anonymous"
             android:gravity="center"
             android:text="匿名祝愿"
             android:textColor="@color/font_light_black"

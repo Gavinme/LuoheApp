@@ -3,9 +3,11 @@ package com.luohe.android.luohe.base;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.FrameLayout;
 
 import com.luohe.android.luohe.R;
 import com.luohe.android.luohe.utils.InstanceUtil;
@@ -18,112 +20,125 @@ import java.util.List;
  * Created by GanQuan on 16/3/25.a simple recycleview
  * 如果adapter使用带有头部adapter需要消除头部的影响
  */
-public abstract class BaseListFragment<T> extends BaseFragment implements BaseRecyclerViewAdapter.OnItemClickListener {
-    public RecyclerView getRecyclerView() {
-        return mRecyclerView;
-    }
+public abstract class BaseListFragment<T> extends BaseFragment implements
+		BaseRecyclerViewAdapter.OnItemClickListener<T> {
+	public RecyclerView getRecyclerView() {
+		return mRecyclerView;
+	}
 
-    public SwipeRefreshLayout getSwipeRefreshLayout() {
-        return mSwipe;
-    }
+	public SwipeRefreshLayout getSwipeRefreshLayout() {
+		return mSwipe;
+	}
 
-    private RecyclerView mRecyclerView;
+	private RecyclerView mRecyclerView;
 
-    private SwipeRefreshLayout mSwipe;
-    private BaseRecyclerViewAdapter<T> mAdapter;
-    protected static final int OP_INIT_LIST = 100;
-    protected static final int OP_ADD_LIST = 101;
-    protected static final int OP_CLEAR_LIST = 102;
+	private SwipeRefreshLayout mSwipe;
+	private BaseRecyclerViewAdapter<T> mAdapter;
+	protected static final int OP_INIT_LIST = 100;
+	protected static final int OP_ADD_LIST = 101;
+	protected static final int OP_CLEAR_LIST = 102;
+	FrameLayout mHeadView;
+	FrameLayout mFootView;
 
-    @Override
-    protected void init(View view) {
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
-        int[] colors = getResources().getIntArray(R.array.google_colors);
-        mSwipe = (SwipeRefreshLayout) view.findViewById(R.id.swipe);
-        mSwipe.setColorSchemeColors(colors);
-        mSwipe.setEnabled(false);//默认禁止下拉
-        mAdapter = instanceAdapter(onGetAdapterType());//init adapter
-        mAdapter.setOnItemClickLitener(this);
-    }
+	@Override
+	protected void init(View view) {
+		mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+		int[] colors = getResources().getIntArray(R.array.google_colors);
+		mSwipe = (SwipeRefreshLayout) view.findViewById(R.id.swipe);
+		mHeadView = (FrameLayout) view.findViewById(R.id.head_layout);
+		mFootView = (FrameLayout) view.findViewById(R.id.bottom_layout);
+		mSwipe.setColorSchemeColors(colors);
+		mSwipe.setEnabled(false);// 默认禁止下拉
+		mAdapter = instanceAdapter(onGetAdapterType());// init adapter
+		mAdapter.setOnItemClickLitener(this);
+		initLoadingHelper(mSwipe);
+	}
 
-    @Override
-    public final void onItemClick(View view, final int position) {
-        if (getRecyclerView().getAdapter() instanceof HeaderAndFooterRecyclerViewAdapter) {
-            onListItemClick(view, RecyclerViewUtils.getAdapterPosition(getRecyclerView(), position));
-        }
-    }
+	protected FrameLayout getHeadView() {
+		return this.mHeadView;
+	}
 
-    protected void onListItemClick(View view, int adapterPosition) {
-        //click
-    }
+	protected FrameLayout getFootView() {
+		return this.mFootView;
+	}
 
-    protected abstract void onInit(View container, RecyclerView recyclerView);
+	@Override
+	public final void onItemClick(T t, View view, final int position) {
+		if (getRecyclerView().getAdapter() instanceof HeaderAndFooterRecyclerViewAdapter) {
+			onListItemClick(t, view, RecyclerViewUtils.getAdapterPosition(getRecyclerView(), position));
+		}
+	}
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        onInit(getView(), mRecyclerView);
+	protected void onListItemClick(T bean, View view, int adapterPosition) {
+		// click
+	}
 
-    }
+	protected abstract void onInit(View container, RecyclerView recyclerView);
 
-    protected abstract Class<? extends BaseRecyclerViewAdapter<T>> onGetAdapterType();
+	@Override
+	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+		onInit(getView(), mRecyclerView);
 
-    private BaseRecyclerViewAdapter<T> instanceAdapter(Class<? extends BaseRecyclerViewAdapter<T>> cls) {
-        return InstanceUtil.getInstance(cls, new Class[]{Context.class}, new Object[]{getActivity()});
-    }
+	}
 
-    @Override
-    protected int onBindLayoutId() {
-        return R.layout.fragment_list_layout;
-    }
+	protected abstract Class<? extends BaseRecyclerViewAdapter<T>> onGetAdapterType();
 
-    protected BaseRecyclerViewAdapter getAdapter() {
-        return mAdapter;
-    }
+	private BaseRecyclerViewAdapter<T> instanceAdapter(Class<? extends BaseRecyclerViewAdapter<T>> cls) {
+		return InstanceUtil.getInstance(cls, new Class[] { Context.class }, new Object[] { getActivity() });
+	}
 
-    public void initList(List<T> list) {
-        initInnerList(list);
+	@Override
+	protected int onBindLayoutId() {
+		return R.layout.fragment_list_layout;
+	}
 
-    }
+	protected BaseRecyclerViewAdapter getAdapter() {
+		return mAdapter;
+	}
 
-    protected void initInnerList(List<T> list) {
-        if (list != null && list.size() > 0) {
-            handleAdapterOp(list, OP_INIT_LIST);
-        }
-    }
+	public void initList(List<T> list) {
+		initInnerList(list);
 
-    protected void addList(List<T> list) {
-        if (list != null && list.size() > 0) {
-            handleAdapterOp(list, OP_ADD_LIST);
-        }
-    }
+	}
 
+	protected void initInnerList(List<T> list) {
+		if (list != null && list.size() > 0) {
+			handleAdapterOp(list, OP_INIT_LIST);
+		}
+	}
 
-    protected void clearList() {
-        if (mAdapter != null) {
-            mAdapter.clearList();
-        }
-    }
+	protected void addList(List<T> list) {
+		if (list != null && list.size() > 0) {
+			handleAdapterOp(list, OP_ADD_LIST);
+		}
+	}
 
-    private void handleAdapterOp(List<T> items, int op) {
-        switch (op) {
-            case OP_INIT_LIST:
-                mAdapter.initList(items);
-                break;
-            case OP_ADD_LIST:
-                mAdapter.addList(items);
-                break;
-            case OP_CLEAR_LIST:
-                mAdapter.clearList();
-                break;
-        }
-    }
+	protected void clearList() {
+		if (mAdapter != null) {
+			mAdapter.clearList();
+		}
+	}
 
-    public interface AdapterManger<T> {
-        void initListToAdapter(List<T> list);
+	private void handleAdapterOp(List<T> items, int op) {
+		switch (op) {
+		case OP_INIT_LIST:
+			mAdapter.initList(items);
+			break;
+		case OP_ADD_LIST:
+			mAdapter.addList(items);
+			break;
+		case OP_CLEAR_LIST:
+			mAdapter.clearList();
+			break;
+		}
+	}
 
-        void addListToAdapter(List<T> list);
+	public interface AdapterManger<T> {
+		void initListToAdapter(List<T> list);
 
-        void clearListToAdapter();
-    }
+		void addListToAdapter(List<T> list);
+
+		void clearListToAdapter();
+	}
 }

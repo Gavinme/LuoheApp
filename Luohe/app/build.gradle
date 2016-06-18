@@ -7,6 +7,7 @@ android {
     defaultConfig {
         applicationId "com.luohe.android.luohe"
         minSdkVersion 11
+        multiDexEnabled true
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
@@ -21,12 +22,13 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-
+    compile "cn.aigestudio.wheelpicker:WheelPicker:1.0.3"
     compile 'com.android.support:support-v4:22.2.1'
     compile 'com.android.support:appcompat-v7:22.2.1'
     compile 'com.android.support:design:22.2.1'
     compile 'com.android.support:recyclerview-v7:22.+'
     compile 'com.android.support:cardview-v7:22.+'
+    compile 'org.simple:androideventbus:1.0.5.1'
 
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
@@ -35,7 +37,15 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.0.0-beta4'
     compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4'
-    compile 'com.squareup.okhttp3:okhttp:3.0.1'
     compile 'com.squareup.okhttp3:logging-interceptor:3.0.1'
     compile project(':openimSDK')
+    compile project(':pickerview')
+    compile('com.github.w446108264:XhsEmoticonsKeyboard:2.0.4') {
+        transitive = false
+    }
+    compile('com.github.w446108264:AndroidEmoji:1.0.0') {
+        transitive = false
+    }
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+//    compile project(':emoji')
 }

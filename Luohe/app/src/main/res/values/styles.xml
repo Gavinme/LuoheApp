@@ -37,9 +37,19 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <style name="font_title_white">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+
     <style name="font_desc_black">
         <item name="android:textColor">@color/font_light_black</item>
         <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="btn_green_black" parent="font_desc_black">
+        <item name="android:background">@drawable/rect_blue</item>
     </style>
 
     <style name="font_time_grey">
@@ -70,15 +80,32 @@
         <item name="tabIndicatorColor">@color/app_main_blue</item>
         <item name="android:textColor">@color/time_color</item>
         <item name="tabIndicatorHeight">0dp</item>
-        <item name="tabPaddingStart">12dp</item>
-        <item name="tabPaddingEnd">12dp</item>
         <item name="tabTextAppearance">@style/CustomTabTextAppearance</item>
         <item name="tabBackground">@drawable/back_tab_layout</item>
         <item name="tabSelectedTextColor">@color/app_main_blue</item>
     </style>
 
+    <style name="MyCustomCategoryTabLayout" parent="Widget.Design.TabLayout">
+        <!--<item name="tabMaxWidth">@dimen/tab_max_width</item>-->
+        <item name="tabIndicatorColor">@color/color_1ec1f7</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="tabIndicatorHeight">0dp</item>
+        <item name="tabPaddingStart">12dp</item>
+        <item name="tabPaddingEnd">12dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="tabTextAppearance">@style/CustomTabCategoryTextAppearance</item>
+        <item name="tabBackground">@drawable/tab_rank_category</item>
+        <item name="tabSelectedTextColor">@color/white</item>
+    </style>
+
     <style name="CustomTabTextAppearance" parent="TextAppearance.Design.Tab">
         <item name="android:textColor">@color/time_color</item>
+        <item name="android:textSize">16sp</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="CustomTabCategoryTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textColor">@color/white</item>
         <item name="android:textSize">16sp</item>
         <item name="textAllCaps">false</item>
     </style>
@@ -94,4 +121,16 @@
         <item name="android:windowIsFloating">true</item>
         <item name="android:padding">0dp</item>
     </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+        <style name="customDialog" parent="Theme.AppCompat.Dialog">
+            <item name="android:windowFrame">@null</item>
+            <item name="android:windowNoTitle">true</item>
+            <item name="android:windowIsFloating">true</item>
+            <item name="android:windowContentOverlay">@null</item>
+        </style>
+
 </resources>

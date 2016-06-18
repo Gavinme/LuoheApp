@@ -9,8 +9,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.luohe.android.luohe.R;
+import com.luohe.android.luohe.base.BaseActivity;
 import com.luohe.android.luohe.luohe.FragmentAdapter;
-import com.luohe.android.luohe.view.swipeback.SwipeBackActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class FindRankActivity extends SwipeBackActivity {
+public class FindRankActivity extends BaseActivity {
 
     @Bind(R.id.title)
     TextView title;
@@ -57,10 +57,10 @@ public class FindRankActivity extends SwipeBackActivity {
         list.add("每周百强榜");
         list.add("好友榜");
 
-        List<Fragment> fragments = new ArrayList<>();
-        for (String name : list) {
+        final List<Fragment> fragments = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
             Bundle bundle = new Bundle();
-            bundle.putString("title", name);
+            bundle.putInt(FindRankFragment.CATEGORY, i);
             fragments.add(Fragment.instantiate(this, FindRankCategoryFragment.class.getName(), bundle));
         }
         FragmentAdapter fragmentAdapter = new FragmentAdapter(getSupportFragmentManager(), fragments, list);
@@ -68,6 +68,18 @@ public class FindRankActivity extends SwipeBackActivity {
         viewPager.setOffscreenPageLimit(list.size() - 1);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setTabsFromPagerAdapter(fragmentAdapter);
+        viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+                ((FindRankCategoryFragment) fragments.get(position)).getData();
+            }
+        });
+        viewPager.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                ((FindRankCategoryFragment) fragments.get(0)).getData();
+            }
+        }, 200);
     }
 
     protected int onBindLayoutId() {

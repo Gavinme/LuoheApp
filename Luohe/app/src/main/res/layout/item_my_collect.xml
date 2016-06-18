@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:layerType="software"
+    android:orientation="vertical">
+
+
+    <View
+        android:id="@+id/divider"
+        style="@style/divider_style_hor" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/content_margin_hor_view_holder"
+        android:paddingRight="@dimen/content_margin_hor_view_holder">
+
+
+        <RelativeLayout
+            android:id="@+id/content_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+
+            <ImageView
+                android:id="@+id/avatar"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/default_round_icon" />
+
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/font_title_blue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_toRightOf="@id/avatar"
+                android:drawableLeft="@drawable/ic_diamond"
+                android:drawablePadding="5dp"
+                android:singleLine="true"
+               android:layout_alignTop="@+id/avatar"
+                android:text="@string/aliwx_remark_name" />
+
+
+            <TextView
+                android:id="@+id/styleName"
+                style="@style/font_desc_black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/avatar"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/common_title" />
+
+            <TextView
+                android:id="@+id/styleSubContent"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/styleName"
+
+                android:layout_marginBottom="8dp"
+
+                android:textSize="18sp"
+                android:gravity="center_vertical"
+                android:text="你好啊！！！" />
+
+            <TextView
+            android:id="@+id/publish_times"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/name"
+            android:layout_toRightOf="@+id/avatar"
+            android:text="05-26 07：41" />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:background="@color/app_grey_color" />
+
+</LinearLayout>

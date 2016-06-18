@@ -34,6 +34,17 @@
         android:textSize="12sp"
         android:visibility="invisible" />
 
+    <TextView
+        android:id="@+id/tv_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@+id/right_bow"
+        android:src="@drawable/icon_tab_redian"
+        android:text="123"
+        android:visibility="invisible" />
+
     <ImageView
         android:id="@+id/img_right"
         android:layout_width="wrap_content"
@@ -46,8 +57,8 @@
 
     <ImageView
         android:id="@+id/right_bow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:src="@drawable/right_arrow" />

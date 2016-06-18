@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    android:paddingTop="7dp">
+
+    <LinearLayout
+        android:id="@+id/bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <RadioButton
+                android:id="@+id/rd_public"
+                style="@style/font_desc_black"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:button="@drawable/check_box_selector"
+                android:checked="true"
+                android:text="公开" />
+
+            <RadioButton
+                android:id="@+id/rd_friend_see"
+                style="@style/font_desc_black"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:button="@drawable/check_box_selector"
+                android:text="仅好友可见" />
+
+            <RadioButton
+                android:id="@+id/rd_own_see"
+                style="@style/font_desc_black"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:button="@drawable/check_box_selector"
+                android:text="仅自己可见" />
+
+
+        </RadioGroup>
+
+        <View style="@style/divider_style_hor" />
+
+        <LinearLayout
+            android:id="@+id/bottom_title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#666"
+            android:gravity="bottom"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <ImageView
+                android:id="@+id/button1"
+                android:layout_width="30dp"
+                android:layout_height="28dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_horizontal"
+                android:src="@drawable/image1" />
+
+            <ImageView
+                android:id="@+id/button2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="14dp"
+                android:gravity="center_horizontal"
+                android:src="@drawable/image2" />
+
+            <ImageView
+                android:id="@+id/button3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="14dp"
+                android:gravity="center_horizontal"
+                android:src="@drawable/image3" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_layout"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/edit_title"
+            style="@style/font_title_black"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@drawable/rect_white_round"
+            android:gravity="center_vertical"
+            android:hint="@string/hint_write_themtitle"
+            android:padding="5dp"
+            android:textColorHint="@color/time_color" />
+
+        <com.luohe.android.luohe.richeditor.RichTextEditor
+            android:id="@+id/edit_des"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/rect_white_round"
+            android:hint="@string/write_them_contenthint"
+            android:padding="5dp" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

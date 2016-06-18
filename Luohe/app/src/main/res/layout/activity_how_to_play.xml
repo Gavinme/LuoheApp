@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/infoguide_0003_banner">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="落和令怎么玩？"
+        android:textColor="@color/blue"
+        android:textSize="18sp"
+        android:layout_above="@+id/linearLayout"
+        android:layout_alignLeft="@+id/line"
+        android:layout_alignStart="@+id/line" />
+
+    <TextView
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="145dp"
+        android:background="@drawable/infoguide_line" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line"
+        android:layout_marginRight="20dp"
+        android:layout_above="@+id/commit"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/linearLayout">
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <LinearLayout
+                android:id="@+id/linear_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+
+                >
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:src="@drawable/ic_launcher" />
+
+                    <TextView
+                        android:id="@+id/one"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="    发布一条你的“落和令”悬赏邀约, 表述你现在的场景, 之后等待大家向你提出他们感兴趣的问题。"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:src="@drawable/ic_launcher" />
+
+                    <TextView
+                        android:id="@+id/two"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="      如果其他的落友对你和你的邀约感兴趣，他们可以在该落和令“悬赏中”的状态中发布“问令”向你提出他们想问的问题。问令是以附加才值的形式竞争排名。\n注：（1）此时你的悬赏才值将消耗等额你自身现有的才值。（2）同一个问令落友间可以一起进行才值的加赏，以冲击更高的排名。"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:src="@drawable/ic_launcher" />
+                    <TextView
+                        android:id="@+id/three"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="     落和令悬赏状态结束后，才者进入“创作中”状态。才者进行问令的回答创作。才者回答问令后，可以获得该问令附加的才值。问令中第1名为“必写”问题，如若才者不进行回答则会扣除和该问令悬赏等额的才值。创作结束后提出该问令的落友可以对才者的回答给予“给力”或者“不给力”的评价，如若评价“不给力”，则原才者只能获得半额才值。第2名及以后的问令才者可以选择回答，回答后则可得到与悬赏等额的才值，不回答不扣才值。"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+                </RelativeLayout>
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/commit"
+        style="@style/font_desc_black"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:background="@drawable/infoguide_rounded"
+        android:gravity="center"
+        android:text="下一步"
+        android:layout_marginBottom="40dp"
+        android:textColor="@color/white" />
+
+</RelativeLayout>

@@ -19,7 +19,7 @@
     <string name="find_react">互动</string>
     <string name="find_wish_pool">祝愿池</string>
     <string name="find_rank">排行榜</string>
-    <string name="find_sys">系统消息</string>
+    <string name="find_sys">消息</string>
     <string name="send_wish">发祝愿</string>
     <string name="send">发布</string>
     <string name="send_wish_act">送出祝愿</string>
@@ -40,4 +40,22 @@
     <string name="report">举报</string>
     <string name="edit">编辑</string>
     <string name="delete">删除</string>
+    <string name="net_error">网络连接错误</string>
+    <string name="is_loading">正在加载...</string>
+    <string name="str_no_net">请检查网络连接！</string>
+    <string name="no_data">亲~,暂无数据!</string>
+    <string name="send_success">发送成功</string>
+    <string name="send_fail">发送失败</string>
+    <string name="tv_send">发送</string>
+    <string name="comment_send_suc">评论成功！</string>
+    <string name="collect_send_suc">关注成功！</string>
+    <string name="collect_send_fail">关注失败！</string>
+    <string name="comment_send_fail">评论失败，请稍后重试！</string>
+    <string name="report_suc">举报成功！</string>
+    <string name="report_fail">举报失败！</string>
+    <string name="like_suc">点赞成功！</string>
+
+    <string name="title_activity_regist_setting">title_activity_regist_setting</string>
+    <string name="regist_start"><font color="#ff0000"> * </font></string>
+
 </resources>

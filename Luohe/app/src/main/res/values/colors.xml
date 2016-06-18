@@ -15,10 +15,11 @@
 
     <color name="divider_color">#adadad</color>
     <color name="white">#ffffff</color>
-
+    <color name="black">#000000</color>
+    <color name="tag_clolr">#f1fafe</color>
     <color name="time_color">#aeaeae</color>
     <color name="person_color">#9d9d9d</color>
-
+    <color name="transparent">#00000000</color>
     <color name="color_0">#ff6666</color>
     <color name="color_1">#ccccff</color>
     <color name="color_2">#9999cc</color>
@@ -39,5 +40,18 @@
     <color name="color_00">#8A000000</color>
     <color name="color_ff0303">#FF0303</color>
     <color name="color_ffc208">#FFC208</color>
+    <color name="color_0b">#0BACE2</color>
+    <color name="color_1ec1f7">#1EC1F7</color>
+    <color name="color_pressed">#9c000000</color>
+    <drawable name="color_0bace2">#0BACE2</drawable>
+    <drawable name="color_1ec1f7">#1EC1F7</drawable>
 
+    <!-->  提现  <-->
+    <color name="color_cash">#666666</color>
+    <color name="color_cash_red">#f00000</color>
+    <color name="color_cash_background">#fff9d6</color>
+    <color name="color_cash_Cambridge_blue">#dcf3ff</color>
+    <color name="color_cash_sky_blue">#5c9ab9</color>
+    <color name="color_cash_socure_black">#050505</color>
+    <color name="color_cash_grey_line">#dddddd</color>
 </resources>

@@ -34,170 +34,170 @@ import java.io.IOException;
  * Created by Devuser on 2015/5/5.
  */
 public class ImageUtils {
-    private static PauseOnScrollListener mPauseOnScrollListener;
-    private static PauseOnScrollListener mPauseOnScrollListenerExtra;
-    private static ImageLoader mImageLoader = ImageLoader.getInstance();
+	private static PauseOnScrollListener mPauseOnScrollListener;
+	private static PauseOnScrollListener mPauseOnScrollListenerExtra;
+	private static ImageLoader mImageLoader = ImageLoader.getInstance();
 
-    private static DisplayImageOptions mDefaultOption;
-    private static DisplayImageOptions mRoundDefault;
+	private static DisplayImageOptions mDefaultOption;
+	private static DisplayImageOptions mRoundDefault;
 
-    public static void displayImage(String imgUrl, ImageView imageView, Context context) {
-        ImageLoader.getInstance().displayImage(imgUrl, imageView, getDefaultOption(), null);
-    }
+	public static void displayImage(String imgUrl, ImageView imageView) {
+		ImageLoader.getInstance().displayImage(imgUrl, imageView, getDefaultOption(), null);
+	}
 
-    private static DisplayImageOptions getDefaultOption() {
-        if (mDefaultOption == null)
-            mDefaultOption = new DisplayImageOptions.Builder().showImageOnLoading(R.drawable.icon_tab_redian).showImageForEmptyUri(R.drawable.icon_tab_redian)
-                    .showImageOnFail(R.drawable.icon_tab_redian).cacheInMemory(true).cacheOnDisk(true).considerExifParams(true)
-                    .bitmapConfig(Bitmap.Config.RGB_565).build();
-        return mDefaultOption;
-    }
+	private static DisplayImageOptions getDefaultOption() {
+		if (mDefaultOption == null)
+			mDefaultOption = new DisplayImageOptions.Builder().showImageOnLoading(R.drawable.default_icon_item)
+					.showImageForEmptyUri(R.drawable.default_icon_item).showImageOnFail(R.drawable.default_icon_item)
+					.cacheInMemory(true).cacheOnDisk(true).considerExifParams(true).bitmapConfig(Bitmap.Config.RGB_565)
+					.build();
+		return mDefaultOption;
+	}
 
-    private static DisplayImageOptions getRoundOption() {
-        if (mRoundDefault == null)
-            new DisplayImageOptions.Builder().showImageOnLoading(R.drawable.icon_tab_redian).showImageForEmptyUri(R.drawable.icon_tab_redian)
-                    .showImageOnFail(R.drawable.icon_tab_redian).cacheInMemory(true).cacheOnDisk(true).considerExifParams(true)
-                    .bitmapConfig(Bitmap.Config.RGB_565).displayer(new RoundedBitmapDisplayer(180)).build();
-        return mRoundDefault;
-    }
+	private static DisplayImageOptions getRoundOption() {
+		if (mRoundDefault == null)
+			mRoundDefault = new DisplayImageOptions.Builder().showImageOnLoading(R.drawable.default_round_icon)
+					.showImageForEmptyUri(R.drawable.default_round_icon).showImageOnFail(R.drawable.default_round_icon)
+					.cacheInMemory(true).cacheOnDisk(true).considerExifParams(true).bitmapConfig(Bitmap.Config.RGB_565)
+					.displayer(new RoundedBitmapDisplayer(180)).build();
+		return mRoundDefault;
+	}
 
-    public static void loadImage(String imgUrl, Context context, ImageLoadingListener listener) {
-        ImageLoader.getInstance().loadImage(imgUrl, listener);
-    }
+	public static void loadImage(String imgUrl, ImageLoadingListener listener) {
+		ImageLoader.getInstance().loadImage(imgUrl, listener);
+	}
 
-    public static void displayGreyImage(String imgUrl, ImageView imageView, Context context) {
-        ImageLoader.getInstance().displayImage(imgUrl, imageView, greyOptions, null);
-    }
+	public static void displayGreyImage(String imgUrl, ImageView imageView) {
+		ImageLoader.getInstance().displayImage(imgUrl, imageView, greyOptions, null);
+	}
 
-    public static void displayRoundImage(String imgUrl, ImageView imageView, Context context) {
-        ImageLoader.getInstance().displayImage(imgUrl, imageView, getRoundOption(), null);
-    }
+	public static void displayRoundImage(String imgUrl, ImageView imageView) {
+		ImageLoader.getInstance().displayImage(imgUrl, imageView, getRoundOption(), null);
+	}
 
-    private static DisplayImageOptions greyOptions = new DisplayImageOptions.Builder()
-            .showImageOnLoading(R.drawable.icon_tab_redian).showImageForEmptyUri(R.drawable.icon_tab_redian)
-            .showImageOnFail(R.drawable.icon_tab_redian).cacheInMemory(true).cacheOnDisk(true).considerExifParams(true)
-            .bitmapConfig(Bitmap.Config.RGB_565).postProcessor(new BitmapProcessor() {
-                @Override
-                public Bitmap process(Bitmap bitmap) {
-                    return greyBitmap(bitmap);
-                }
-            }).build();
+	private static DisplayImageOptions greyOptions = new DisplayImageOptions.Builder()
+			.showImageOnLoading(R.drawable.default_icon_item).showImageForEmptyUri(R.drawable.default_icon_item)
+			.showImageOnFail(R.drawable.default_icon_item).cacheInMemory(true).cacheOnDisk(true)
+			.considerExifParams(true).bitmapConfig(Bitmap.Config.RGB_565).postProcessor(new BitmapProcessor() {
+				@Override
+				public Bitmap process(Bitmap bitmap) {
+					return greyBitmap(bitmap);
+				}
+			}).build();
 
+	public synchronized static PauseOnScrollListener getScrollListener() {
+		if (mPauseOnScrollListener == null) {
+			mPauseOnScrollListener = new PauseOnScrollListener(ImageLoader.getInstance(), true, true);
+			Log.e("gq", "getScrollListener:OnScrollListener()");
+		}
 
-    public synchronized static PauseOnScrollListener getScrollListener() {
-        if (mPauseOnScrollListener == null) {
-            mPauseOnScrollListener = new PauseOnScrollListener(ImageLoader.getInstance(), true, true);
-            Log.e("gq", "getScrollListener:OnScrollListener()");
-        }
+		return mPauseOnScrollListener;
+	}
 
-        return mPauseOnScrollListener;
-    }
+	public synchronized static PauseOnScrollListener getScrollListener(AbsListView.OnScrollListener OnScrollListener) {
+		if (mPauseOnScrollListenerExtra == null) {
+			mPauseOnScrollListenerExtra = new PauseOnScrollListener(ImageLoader.getInstance(), true, true,
+					OnScrollListener);
+		}
+		Log.e("gq", "getScrollListener:OnScrollListener(OnScrollListener)");
+		return mPauseOnScrollListenerExtra;
+	}
 
-    public synchronized static PauseOnScrollListener getScrollListener(AbsListView.OnScrollListener OnScrollListener) {
-        if (mPauseOnScrollListenerExtra == null) {
-            mPauseOnScrollListenerExtra = new PauseOnScrollListener(ImageLoader.getInstance(), true, true,
-                    OnScrollListener);
-        }
-        Log.e("gq", "getScrollListener:OnScrollListener(OnScrollListener)");
-        return mPauseOnScrollListenerExtra;
-    }
+	/**
+	 * 灰度话化图片
+	 */
+	private static Bitmap greyBitmap(Bitmap bitmap) {
+		int width = bitmap.getWidth();
+		int height = bitmap.getHeight();
 
-    /**
-     * 灰度话化图片
-     */
-    private static Bitmap greyBitmap(Bitmap bitmap) {
-        int width = bitmap.getWidth();
-        int height = bitmap.getHeight();
+		Bitmap faceIconGreyBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
 
-        Bitmap faceIconGreyBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+		Canvas canvas = new Canvas(faceIconGreyBitmap);
+		Paint paint = new Paint();
+		ColorMatrix colorMatrix = new ColorMatrix();
+		colorMatrix.setSaturation(0.01f); // 决定灰度值
+		ColorMatrixColorFilter colorMatrixFilter = new ColorMatrixColorFilter(colorMatrix);
+		paint.setColorFilter(colorMatrixFilter);
+		canvas.drawBitmap(bitmap, 0, 0, paint);
+		return faceIconGreyBitmap;
+	}
 
-        Canvas canvas = new Canvas(faceIconGreyBitmap);
-        Paint paint = new Paint();
-        ColorMatrix colorMatrix = new ColorMatrix();
-        colorMatrix.setSaturation(0.01f); // 决定灰度值
-        ColorMatrixColorFilter colorMatrixFilter = new ColorMatrixColorFilter(colorMatrix);
-        paint.setColorFilter(colorMatrixFilter);
-        canvas.drawBitmap(bitmap, 0, 0, paint);
-        return faceIconGreyBitmap;
-    }
+	public static String saveImage(Context context, String name, Bitmap bitmap) {
+		String imageName = name;
+		File file = new File(context.getFilesDir().getAbsolutePath() + "/" + imageName);
+		if (!file.exists()) {
+			try {
+				file.createNewFile();
+				BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
+				bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+				bos.flush();
+				bos.close();
+				return file.getAbsolutePath();
+			} catch (IOException e) {
+				e.printStackTrace();
+				return null;
+			}
 
-    public static String saveImage(Context context, String name, Bitmap bitmap) {
-        String imageName = name;
-        File file = new File(context.getFilesDir().getAbsolutePath() + "/" + imageName);
-        if (!file.exists()) {
-            try {
-                file.createNewFile();
-                BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
-                bos.flush();
-                bos.close();
-                return file.getAbsolutePath();
-            } catch (IOException e) {
-                e.printStackTrace();
-                return null;
-            }
+		}
+		return null;
+	}
 
-        }
-        return null;
-    }
+	public static String saveWallPaperImage(Context context, String name, Bitmap bitmap) {
+		File appDir = new File(Environment.getExternalStorageDirectory(), "我的刀塔");
+		if (!appDir.exists()) {
+			appDir.mkdir();
+		}
+		File file = new File(appDir, name);
+		if (!file.exists()) {
+			try {
+				file.createNewFile();
+				BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
+				bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+				bos.flush();
+				bos.close();
+				return file.getAbsolutePath();
+			} catch (IOException e) {
+				e.printStackTrace();
+				return null;
+			}
 
-    public static String saveWallPaperImage(Context context, String name, Bitmap bitmap) {
-        File appDir = new File(Environment.getExternalStorageDirectory(), "我的刀塔");
-        if (!appDir.exists()) {
-            appDir.mkdir();
-        }
-        File file = new File(appDir, name);
-        if (!file.exists()) {
-            try {
-                file.createNewFile();
-                BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
-                bos.flush();
-                bos.close();
-                return file.getAbsolutePath();
-            } catch (IOException e) {
-                e.printStackTrace();
-                return null;
-            }
+		}
+		return null;
+	}
 
-        }
-        return null;
-    }
+	public static void copyImgToPhoto(Context context, String filePath, String name) {
+		try {
+			MediaStore.Images.Media.insertImage(context.getContentResolver(), filePath, name, null);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 
-    public static void copyImgToPhoto(Context context, String filePath, String name) {
-        try {
-            MediaStore.Images.Media.insertImage(context.getContentResolver(), filePath, name, null);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+		context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(new File(filePath))));
+	}
 
-        context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(new File(filePath))));
-    }
+	public static String getImgName(String url) {
+		String s[] = url.split("/");
+		return s[s.length - 1];
+	}
 
-    public static String getImgName(String url) {
-        String s[] = url.split("/");
-        return s[s.length - 1];
-    }
+	public static double getCacheSize(Context context) {
+		File cacheDir = StorageUtils.getCacheDirectory(context);
+		Log.d("ZipengS",
+				"ImageLoader cache path=" + cacheDir.getAbsolutePath() + "\nsize="
+						+ FileUtil.calculateFileSize(ImageLoader.getInstance().getDiskCache().getDirectory()));
+		long cacheSize = FileUtil.calculateFileSize(ImageLoader.getInstance().getDiskCache().getDirectory());
+		double size = (double) cacheSize / (1024 * 1024);
 
+		return size;
+	}
 
-    public static double getCacheSize(Context context) {
-        File cacheDir = StorageUtils.getCacheDirectory(context);
-        Log.d("ZipengS", "ImageLoader cache path=" + cacheDir.getAbsolutePath() + "\nsize="
-                + FileUtil.calculateFileSize(ImageLoader.getInstance().getDiskCache().getDirectory()));
-        long cacheSize = FileUtil.calculateFileSize(ImageLoader.getInstance().getDiskCache().getDirectory());
-        double size = (double) cacheSize / (1024 * 1024);
+	public static void clearCache(Context context) {
 
-        return size;
-    }
+		ImageLoader.getInstance().clearDiskCache();
+	}
 
-    public static void clearCache(Context context) {
-
-        ImageLoader.getInstance().clearDiskCache();
-    }
-
-    public static DiskCache getDiskCache(Context context) {
-        return ImageLoader.getInstance().getDiskCache();
-    }
-
+	public static DiskCache getDiskCache(Context context) {
+		return ImageLoader.getInstance().getDiskCache();
+	}
 
 }

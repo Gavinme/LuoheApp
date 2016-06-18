@@ -47,6 +47,14 @@ public class StatuBarManager {
         }
     }
 
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+    public static void setImmersive(TitleBar titleBar,View parent,boolean flag){
+        if (flag){
+            titleBar.setImmersive(false);
+            parent.setFitsSystemWindows(true);
+        }
+    }
+
     private static boolean hasKitKat() {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
     }

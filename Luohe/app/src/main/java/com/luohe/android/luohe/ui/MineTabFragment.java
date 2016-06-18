@@ -2,26 +2,33 @@ package com.luohe.android.luohe.ui;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.androidplus.util.LogUtils;
 import com.luohe.android.luohe.R;
 import com.luohe.android.luohe.base.BaseFragment;
+import com.luohe.android.luohe.find.FindItemView;
 import com.luohe.android.luohe.mine.AboutMeActivity;
+import com.luohe.android.luohe.mine.MyCollectListActivity;
 import com.luohe.android.luohe.mine.MyLuoheListActivity;
+import com.luohe.android.luohe.mine.MyShareListActivity;
 import com.luohe.android.luohe.mine.MyThemeListActivity;
-import com.luohe.android.luohe.mine.MyThemeListFragment;
 import com.luohe.android.luohe.mine.SettingActivity;
+import com.luohe.android.luohe.net.data.Result;
+import com.luohe.android.luohe.net.http.ApiLoader;
+import com.luohe.android.luohe.net.http.CommonSubscriber;
+import com.luohe.android.luohe.user.UserCommonInfo;
+import com.luohe.android.luohe.user.UserInfoUtil;
+import com.luohe.android.luohe.utils.ImageUtils;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-
-import com.luohe.android.luohe.find.FindItemView;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by GanQuan on 16/2/20.
@@ -50,7 +57,11 @@ public class MineTabFragment extends BaseFragment implements View.OnClickListene
     FindItemView collect;
     @Bind(R.id.setting)
     FindItemView setting;
+    @Bind(R.id.cash)
+    FindItemView cash;
 
+    @Bind(R.id.container)
+    ScrollView container;
 
     @Override
     public void onAttach(Activity activity) {
@@ -58,18 +69,60 @@ public class MineTabFragment extends BaseFragment implements View.OnClickListene
         LogUtils.e(TAG, "onattach" + activity.getClass().getSimpleName());
     }
 
-
     @Override
     protected int onBindLayoutId() {
         return R.layout.fragment_mine_tab;
     }
 
-
     @Override
     protected void init(View view) {
         initViews();
+        initLoadingHelper(container);
+        getLoadingHelper().addRetryListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadInfo();
+            }
+        });
+        loadInfo();
     }
 
+    private void loadInfo() {
+        getLoadingHelper().showLoadingView();
+        ApiLoader.getApiService().userInfo(UserInfoUtil.getInstance().getUserInfo().getUid())
+                .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new CommonSubscriber<Result<UserCommonInfo>>(getActivity()) {
+                    @Override
+                    public void onSuccess(Result<UserCommonInfo> userInfoResult) {
+                        if (userInfoResult.getResult() != null) {
+                            getLoadingHelper().showContentView();
+                            UserInfoUtil.getInstance().updateUserInfo(userInfoResult.getResult());
+                            setUserViews(userInfoResult.getResult());
+                        } else {
+                            getLoadingHelper().showNetworkError();
+                        }
+                    }
+
+                }.onError(new CommonSubscriber.ErrorHandler() {
+                    @Override
+                    public void onError(Throwable e) {
+                        getLoadingHelper().showNetworkError();
+                    }
+                }));
+    }
+
+    private void setUserViews(UserCommonInfo result) {
+        ImageUtils.displayRoundImage(result.headUrl, avatar);
+        name.setText(result.nickName);
+        if (!TextUtils.isEmpty(result.birthday) && !TextUtils.isEmpty(result.province)) {
+            addressTime.setText(String.format("%s|%s", result.birthday, result.province));
+        } else {
+            addressTime.setText("");
+        }
+        if (!TextUtils.isEmpty(result.accountDesc)) {
+            desc.setText(result.accountDesc);
+        }
+    }
 
     private void initViews() {
 
@@ -87,16 +140,19 @@ public class MineTabFragment extends BaseFragment implements View.OnClickListene
         collect.setOnClickListener(this);
         setting.setLeftTextview(R.drawable.my_setting, getResources().getString(R.string.setting));
         setting.setOnClickListener(this);
+        cash.setLeftTextview(R.drawable.my_about_user, "提现");
+        cash.setOnClickListener(this);
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
 
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        ButterKnife.bind(this, rootView);
-        return rootView;
+    public void onPause() {
+        super.onPause();
     }
 
     @Override
@@ -105,30 +161,36 @@ public class MineTabFragment extends BaseFragment implements View.OnClickListene
         ButterKnife.unbind(this);
     }
 
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.about_me:
-
-                startActivity(new Intent(getActivity(), AboutMeActivity.class));
-
+                Intent aboutMeIntent = new Intent(getActivity(),AboutMeActivity.class);
+                aboutMeIntent.putExtra("uid", UserInfoUtil.getInstance().getUserInfo().getUid());
+                startActivity(aboutMeIntent);
                 break;
             case R.id.luohe:
                 startActivity(new Intent(getActivity(), MyLuoheListActivity.class));
                 break;
-            case R.id.theme:
-                startActivity(new Intent(getActivity(), MyLuoheListActivity.class));
+            case R.id.theme:// 我的主题
+                startActivity(new Intent(getActivity(), MyThemeListActivity.class));
                 break;
             case R.id.wenfeng:
-                startActivity(new Intent(getActivity(), MyLuoheListActivity.class));
+                startActivity(new Intent(getActivity(), MyWenFengListActivity.class));
                 break;
             case R.id.share:
+                startActivity(new Intent(getActivity(),MyShareListActivity.class));
                 break;
             case R.id.collect:
+                startActivity(new Intent(getActivity(), MyCollectListActivity.class));
                 break;
             case R.id.setting:
 
                 startActivity(new Intent(getActivity(), SettingActivity.class));
+                break;
+            case R.id.cash:// todo
+                startActivity(new Intent(getActivity(), CashActivity.class));
                 break;
         }
     }

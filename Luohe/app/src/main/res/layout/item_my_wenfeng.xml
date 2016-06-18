@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:layerType="software"
+    android:orientation="vertical">
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/font_title_black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/tv_tag"
+            android:paddingBottom="8dp"
+            android:paddingLeft="@dimen/content_margin_hor_view_holder"
+            android:paddingTop="8dp"
+            android:singleLine="true"
+            android:text="@string/common_title" />
+
+        <TextView
+            android:id="@+id/tv_tag"
+            style="@style/font_desc_black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@color/app_main_pink"
+            android:padding="5dp"
+            android:text="草稿"
+
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+
+    <View
+        android:id="@+id/divider"
+        style="@style/divider_style_hor" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/content_margin_hor_view_holder"
+        android:paddingRight="@dimen/content_margin_hor_view_holder">
+
+
+        <RelativeLayout
+
+            android:id="@+id/content_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp">
+
+
+            <ImageView
+                android:id="@+id/avatar"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/default_round_icon" />
+
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/font_title_blue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_toRightOf="@id/avatar"
+                android:drawableLeft="@drawable/ic_diamond"
+                android:drawablePadding="5dp"
+                android:singleLine="true"
+                android:text="@string/aliwx_remark_name" />
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_toRightOf="@+id/name"
+                android:singleLine="true"
+                android:text="@string/time_45"
+                android:textColor="@color/time_color"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/desc"
+                style="@style/font_desc_black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/time"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/common_title" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:background="@color/app_grey_color" />
+
+</LinearLayout>

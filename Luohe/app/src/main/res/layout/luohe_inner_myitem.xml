@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:layerType="software"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/content_margin_hor_view_holder"
+    android:paddingRight="@dimen/content_margin_hor_view_holder">
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/dot_line" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+
+                android:background="@drawable/dot_verliner" />
+
+            <TextView
+                android:id="@+id/left_icon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="3dp"
+                android:background="@drawable/luohe_rank_left"
+                android:gravity="center"
+                android:src="@drawable/icon_tab_redian"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+
+            android:id="@+id/content_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp">
+
+
+            <ImageView
+                android:id="@+id/avatar"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/default_round_icon" />
+
+
+            <TextView
+                android:id="@+id/tv_coin"
+                style="@style/font_title_black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="8dp"
+                android:drawableLeft="@drawable/icon_money"
+                android:drawablePadding="5dp"
+                android:text="45" />
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/font_title_blue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_toRightOf="@id/avatar"
+                android:drawableLeft="@drawable/ic_diamond"
+                android:drawablePadding="5dp"
+                android:singleLine="true"
+                android:text="@string/aliwx_remark_name" />
+
+
+            <TextView
+                android:id="@+id/title"
+                style="@style/font_title_black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/avatar"
+                android:layout_marginTop="10dp"
+                android:singleLine="true"
+                android:text="@string/common_title" />
+
+            <TextView
+                android:id="@+id/desc"
+                style="@style/font_desc_black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/title"
+                android:layout_marginTop="10dp"
+                android:text="@string/common_title" />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/dot_line" />
+
+    <RelativeLayout
+        android:id="@+id/layout_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#f4f4f4"
+        android:padding="9dp">
+
+        <TextView
+            android:id="@+id/tv_time"
+            style="@style/font_time_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="@string/time_45"
+
+
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_see_article"
+            style="@style/font_time_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/tv_comment"
+            android:drawableLeft="@drawable/icon_jiashang"
+            android:drawablePadding="5dp"
+            android:text="查看文章" />
+
+        <TextView
+            android:id="@+id/tv_comment"
+            style="@style/font_time_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="20dp"
+            android:drawableLeft="@drawable/icon_comment_bottom"
+            android:drawablePadding="5dp"
+            android:text="@string/comment" />
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

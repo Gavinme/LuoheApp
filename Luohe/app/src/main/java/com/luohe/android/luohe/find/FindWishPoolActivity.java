@@ -10,8 +10,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.luohe.android.luohe.R;
+import com.luohe.android.luohe.base.BaseActivity;
 import com.luohe.android.luohe.luohe.FragmentAdapter;
-import com.luohe.android.luohe.view.swipeback.SwipeBackActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class FindWishPoolActivity extends SwipeBackActivity {
+public class FindWishPoolActivity extends BaseActivity {
 
     @Bind(R.id.title)
     TextView title;
@@ -56,9 +56,10 @@ public class FindWishPoolActivity extends SwipeBackActivity {
         list.add("发出的祝福");
 
         List<Fragment> fragments = new ArrayList<>();
-        for (String name : list) {
+        for (int i = 0; i < list.size(); i++) {
+            String name = list.get(i);
             Bundle bundle = new Bundle();
-            bundle.putString("title", name);
+            bundle.putInt("type", i);
             fragments.add(Fragment.instantiate(this, FindWishPoolFragment.class.getName(), bundle));
         }
         FragmentAdapter fragmentAdapter = new FragmentAdapter(getSupportFragmentManager(), fragments, list);

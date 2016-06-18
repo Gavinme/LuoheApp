@@ -14,66 +14,79 @@ import com.luohe.android.luohe.R;
  * Created by GanQuan on 16/3/20.
  */
 public class FindItemView extends FrameLayout {
-    TextView leftTextview;
-    TextView tips_count;
-    ImageView img_right;
-    ImageView right_tip;
+	TextView leftTextview;
+	TextView tips_count;
+	ImageView img_right;
+	ImageView right_tip;
+	TextView right_tv;
+	ImageView right_bow;
 
-    public FindItemView(Context context) {
-        super(context);
-        initViews();
-    }
+	public FindItemView(Context context) {
+		super(context);
+		initViews();
+	}
 
-    public FindItemView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        initViews();
-    }
+	public FindItemView(Context context, AttributeSet attrs) {
+		super(context, attrs);
+		initViews();
+	}
 
-    public FindItemView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        initViews();
-    }
+	public FindItemView(Context context, AttributeSet attrs, int defStyleAttr) {
+		super(context, attrs, defStyleAttr);
+		initViews();
+	}
 
-    private void initViews() {
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.layout_include_itemfind, this);
-        leftTextview = (TextView) view.findViewById(R.id.left_text);
-        tips_count = (TextView) view.findViewById(R.id.tip_count);
-        img_right = (ImageView) view.findViewById(R.id.img_right);
-        right_tip = (ImageView) view.findViewById(R.id.right_tip);
-        img_right.setVisibility(GONE);
-        right_tip.setVisibility(GONE);
-    }
+	private void initViews() {
+		View view = LayoutInflater.from(getContext()).inflate(R.layout.layout_include_itemfind, this);
+		leftTextview = (TextView) view.findViewById(R.id.left_text);
+		tips_count = (TextView) view.findViewById(R.id.tip_count);
+		img_right = (ImageView) view.findViewById(R.id.img_right);
+		right_tip = (ImageView) view.findViewById(R.id.right_tip);
+		right_tv = (TextView) view.findViewById(R.id.tv_right);
+		right_bow = (ImageView) view.findViewById(R.id.right_bow);
+		img_right.setVisibility(GONE);
+		right_tip.setVisibility(GONE);
+	}
 
-    public void setTipCount(int count) {
-        tips_count.setText(count + "");
-        tips_count.setVisibility(VISIBLE);
-    }
+	public void setTipCount(int count) {
+		tips_count.setText(count + "");
+		tips_count.setVisibility(VISIBLE);
+	}
 
-    public void setTipcountVisiable(int flag) {
-        tips_count.setVisibility(flag);
-    }
+	public void setRightBowVisiable(int flag) {
+		right_bow.setVisibility(flag);
+	}
 
-    /**
-     * @param drawLeftId drawpaddingleft
-     * @param str        text
-     */
-    public void setLeftTextview(int drawLeftId, String str) {
-        this.leftTextview.setText(str);
-        this.leftTextview.setCompoundDrawablesWithIntrinsicBounds(drawLeftId, 0, 0, 0);
-    }
+	public void setTipcountVisiable(int flag) {
+		tips_count.setVisibility(flag);
+	}
 
-    public void setImg_right(int drawId) {
-        this.img_right.setBackgroundResource(drawId);
+	/**
+	 * @param drawLeftId
+	 *            drawpaddingleft
+	 * @param str
+	 *            text
+	 */
+	public void setLeftTextview(int drawLeftId, CharSequence str) {
+		this.leftTextview.setText(str);
+		this.leftTextview.setCompoundDrawablesWithIntrinsicBounds(drawLeftId, 0, 0, 0);
+	}
 
-    }
+	public void setImg_right(int drawId) {
+		this.img_right.setBackgroundResource(drawId);
 
-    public void setImgRigthVisiable(int flag) {
-        this.img_right.setVisibility(flag);
-    }
+	}
 
-    public void setRightTipVisiable(int flag) {
-        this.img_right.setVisibility(flag);
-    }
+	public void setImgRigthVisiable(int flag) {
+		this.img_right.setVisibility(flag);
+	}
 
+	public void setRightTipVisiable(int flag) {
+		this.img_right.setVisibility(flag);
+	}
 
+	public void setRightText(CharSequence string) {
+		this.right_tv.setText(string);
+		this.right_tv.setVisibility(VISIBLE);
+	}
 }

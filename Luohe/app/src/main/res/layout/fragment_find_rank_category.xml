@@ -39,7 +39,7 @@
             android:drawableLeft="@drawable/ic_rank_dec"
             android:drawablePadding="2dp"
             android:drawableStart="@drawable/ic_rank_dec"
-            android:text="上升0名"
+            android:text="下降5名"
             android:textColor="@color/green"
             android:textSize="16sp"
             tools:ignore="HardcodedText" />
@@ -50,7 +50,9 @@
         style="@style/MyCustomTabLayout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#f6f6f6" />
+        android:background="#f6f6f6"
+        android:paddingBottom="12dp"
+        android:paddingTop="12dp" />
 
 
     <LinearLayout

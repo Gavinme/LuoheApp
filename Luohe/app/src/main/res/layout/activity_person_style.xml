@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginTop="30dp"
+
+            android:text="请在下面内容中选择才者风格（最多可选三项，且只能有一个主风格）"
+            android:textSize="14sp" />
+
+        <com.luohe.android.luohe.widget.NoScrollGridView
+            android:id="@+id/activity_person_style"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginTop="30dp"
+            android:horizontalSpacing="9dp"
+            android:numColumns="4"
+            android:verticalSpacing="18dp"
+
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginTop="8dp"
+            android:background="#d3d2d2"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginTop="18dp"
+            android:text="请选择我的主风格"
+            android:textSize="14sp" />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginTop="30dp"
+            android:horizontalSpacing="9dp"
+            android:verticalSpacing="18dp"
+            android:text="时尚..."
+            android:textSize="30sp"
+            android:visibility="invisible"
+            />
+
+        <com.luohe.android.luohe.widget.NoScrollGridView
+            android:id="@+id/host_person_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginTop="30dp"
+            android:horizontalSpacing="9dp"
+            android:numColumns="4"
+            android:verticalSpacing="18dp" />
+
+    </RelativeLayout>
+        <TextView
+            android:id="@+id/tv_affirm"
+            style="@style/font_title_white"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/rect_blue_bound"
+
+            android:gravity="center"
+            android:text="确认"
+            android:textSize="14sp" />
+
+
+    </LinearLayout>
+</ScrollView>

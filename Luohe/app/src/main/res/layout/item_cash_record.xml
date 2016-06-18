@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/color_cash_Cambridge_blue"
+            android:padding="10dp">
+            <TextView
+                android:id="@+id/cash_record_indent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="订单号: "
+                android:textColor="@color/color_cash_sky_blue"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/cash_record_indent_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/cash_record_indent"
+                android:text="1111111134432"
+                android:textColor="@color/color_cash_sky_blue"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/cash_record_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="2016-05-12"
+                android:textColor="@color/font_light_black"
+                android:textSize="18sp" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/white"
+            android:padding="10dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="来源"
+                android:textSize="18sp"
+
+                />
+            <TextView
+                android:id="@+id/cash_record_deal_source"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="支付宝交易"
+                android:textSize="18sp"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/color_cash_socure_black"
+                />
+
+
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_cash_grey_line"
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/white"
+
+            android:padding="10dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="金额"
+                android:textSize="18sp"
+                />
+            <TextView
+                android:id="@+id/cash_record_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="+1500.00"
+                android:textColor="@color/color_cash_red"
+                />
+
+
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            />
+
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

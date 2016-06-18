@@ -15,7 +15,7 @@
             android:layout_marginTop="20dp" />
 
         <com.luohe.android.luohe.mine.SettingItemView
-            android:id="@+id/luohe_account"
+            android:id="@+id/security"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -85,5 +85,16 @@
             android:layout_height="wrap_content" />
 
         <View style="@style/divider_style_hor" />
+
+        <TextView
+            android:id="@+id/tv_logout"
+            style="@style/font_title_white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@drawable/rect_blue_bound"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="退出登录" />
     </LinearLayout>
 </ScrollView>

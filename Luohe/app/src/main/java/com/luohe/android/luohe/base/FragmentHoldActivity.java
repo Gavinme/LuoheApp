@@ -7,7 +7,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
 
 import com.luohe.android.luohe.R;
-import com.luohe.android.luohe.view.swipeback.SwipeBackActivity;
 
 /**
  * Created by Devuser on 2015/5/18. 子类的启动Intent中必须put

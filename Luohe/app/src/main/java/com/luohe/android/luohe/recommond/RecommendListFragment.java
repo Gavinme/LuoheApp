@@ -2,121 +2,161 @@ package com.luohe.android.luohe.recommond;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.androidplus.util.LayoutUtil;
 import com.luohe.android.luohe.R;
-import com.luohe.android.luohe.base.BaseFragment;
-import com.luohe.android.luohe.base.BaseListFragment;
 import com.luohe.android.luohe.base.BaseRecyclerViewAdapter;
 import com.luohe.android.luohe.base.BaseRefreshListFragment;
 import com.luohe.android.luohe.base.BindLayout;
-import com.luohe.android.luohe.utils.LocalDisplay;
+import com.luohe.android.luohe.common.TitleViewPagerAdapter;
+import com.luohe.android.luohe.net.data.Result;
+import com.luohe.android.luohe.net.http.CommonSubscriber;
+import com.luohe.android.luohe.net.http.ApiLoader;
+import com.luohe.android.luohe.net.http.service.RecommendListItem;
+import com.luohe.android.luohe.net.model.LuoheTagBean;
+import com.luohe.android.luohe.utils.TimeUtils;
+import com.luohe.android.luohe.utils.ToastUtil;
 
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
-import in.srain.cube.views.ptr.PtrDefaultHandler;
-import in.srain.cube.views.ptr.PtrFrameLayout;
-import in.srain.cube.views.ptr.PtrHandler;
-import in.srain.cube.views.ptr.header.MaterialHeader;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by GanQuan on 16/3/13.
  */
-public class RecommendListFragment extends BaseRefreshListFragment<RecommendListFragment.RecomBean> {
-    Handler mHanlder = new Handler();
+public class RecommendListFragment extends BaseRefreshListFragment<RecommendListItem> {
+	private int tagId;
 
-    @Override
-    protected void onInit(View view, RecyclerView recyclerView) {
-        super.onInit(view, recyclerView);
-        recyclerView.setPadding(0, LayoutUtil.GetPixelByDIP(getActivity(), 8), 0, 0);
-        mHanlder.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                refreshData();
-            }
-        }, 1000);
+	@Override
+	protected void onInit(View view, RecyclerView recyclerView) {
+		super.onInit(view, recyclerView);
+		recyclerView.setPadding(0, LayoutUtil.GetPixelByDIP(getActivity(), 8), 0, 0);
+		LuoheTagBean tagBean = (LuoheTagBean) getArguments().getSerializable(TitleViewPagerAdapter.BUNDLE_KEY);
+		if (tagBean != null)
+			tagId = tagBean.baseId;
+		Log.e("LuoheListFragment", "tagId:" + tagId);
+		setListMode(MODE_DISABLE);
+		refreshData();
+		getLoadingHelper().showLoadingView();
+		getLoadingHelper().addRetryListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				refreshData();
+			}
+		});
 
-    }
+	}
 
-    private List<RecomBean> createData() {
-        List<RecomBean> list = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            list.add(new RecomBean());
-        }
-        return list;
-    }
+	@Override
+	protected Class<? extends BaseRecyclerViewAdapter<RecommendListItem>> onGetAdapterType() {
+		return RecommAdapter.class;
 
+	}
 
-    @Override
-    protected Class<? extends BaseRecyclerViewAdapter<RecomBean>> onGetAdapterType() {
-        return RecommAdapter.class;
-    }
+	@Override
+	protected void onPullDown(final AdapterManger<RecommendListItem> mAdapterManger) {
+		ApiLoader.getApiService().recommendArticle(tagId, 0).subscribeOn(getNewThread()).observeOn(getMainThread())
+				.subscribe(new CommonSubscriber<Result<List<RecommendListItem>>>(getActivity()) {
+					@Override
+					public void onSuccess(Result<List<RecommendListItem>> listResult) {
+						if (listResult.getResult() != null && listResult.getResult() != null) {
+							if (listResult.getResult().size() != 0) {
+								getLoadingHelper().showContentView();
+								mAdapterManger.initListToAdapter(listResult.getResult());
+							} else {
+								getLoadingHelper().showDefaultEmptyView();
 
+							}
+						} else {
+							getLoadingHelper().showNetworkError();
 
-    @Override
-    protected void onPullDown(AdapterManger<RecomBean> mAdapterManger) {
-        mAdapterManger.initListToAdapter(createData());
-        mHanlder.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                notifyLoadComplete(0);
-            }
-        }, 1000);
+						}
 
-    }
+					}
 
-    @Override
-    protected void onLoadMore(final AdapterManger<RecomBean> adapter) {
-        mHanlder.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                adapter.addListToAdapter(createData());
-                notifyLoadComplete(0);
-            }
-        }, 1000);
+				}.onError(new CommonSubscriber.ErrorHandler() {
+					@Override
+					public void onError(Throwable e) {
+						getLoadingHelper().showNetworkError();
 
-    }
+					}
+				}));
 
-    @Override
-    protected void onListItemClick(View view, int adapterPosition) {
-        super.onListItemClick(view, adapterPosition);
-        startActivity(new Intent(getActivity(), PreviewArticalActivity.class));
-    }
+	}
 
-    static class RecommAdapter extends BaseRecyclerViewAdapter<RecomBean> {
+	@Override
+	protected void onLoadMore(final AdapterManger<RecommendListItem> adapter) {
+	}
 
-        public RecommAdapter(Context context) {
-            super(context);
-        }
+	@Override
+	protected void onListItemClick(RecommendListItem bean, View view, int adapterPosition) {
+		if (bean.source == 0) {
+			gotoLuoheArticle(bean);
+		} else if (bean.source == 1) {
+			gotoWenfeng(bean);
+		}
 
-        @Override
-        protected void onBindVHLayoutId(List<Class<?>> viewBundles) {
-            viewBundles.add(ViewHolderRecommend.class);
-        }
-    }
+	}
 
-    @BindLayout(id = R.layout.recommen_list_item)
-    static class ViewHolderRecommend extends BaseRecyclerViewAdapter.BaseViewHolder<RecomBean> {
+	private void gotoWenfeng(RecommendListItem bean) {
+		startActivity(PreviewWenfengActivity.getStartIntent(getActivity(), bean.id));
+	}
 
+	private void gotoLuoheArticle(RecommendListItem bean) {
+		startActivity(PreviewArticalActivity.getStartIntent(getActivity(), bean.id));
+	}
 
-        public ViewHolderRecommend(View itemView) {
-            super(itemView);
-        }
+	public static class RecommAdapter extends BaseRecyclerViewAdapter<RecommendListItem> {
 
-        @Override
-        protected void bindView(RecomBean bean, int position, Context context) {
+		public RecommAdapter(Context context) {
+			super(context);
+		}
 
-        }
-    }
+		@Override
+		protected void onBindVHLayoutId(List<Class<?>> viewBundles) {
+			viewBundles.add(ViewHolderRecommend.class);
+		}
+	}
 
-    public static class RecomBean implements Serializable {
-    }
+	@BindLayout(id = R.layout.recommen_list_item)
+	static class ViewHolderRecommend extends BaseRecyclerViewAdapter.BaseViewHolder<RecommendListItem> {
+
+		@Bind(R.id.avatar)
+		ImageView avatar;
+		// @Bind(R.id.state)
+		// ImageView state;
+		// @Bind(R.id.count)
+		// TextView count;
+		@Bind(R.id.name)
+		TextView name;
+		@Bind(R.id.time)
+		TextView time;
+		@Bind(R.id.title)
+		TextView title;
+		@Bind(R.id.desc)
+		TextView desc;
+
+		public ViewHolderRecommend(View itemView) {
+			super(itemView);
+		}
+
+		@Override
+		protected void bindView(final RecommendListItem bean, int position, final Context context) {
+			time.setText(TimeUtils.getFormatTime(bean.publishTime + ""));
+			name.setText(bean.nickName);
+			desc.setText(bean.titleSubCon);
+			title.setText(bean.titleName);
+
+			// count.setText(bean.);todo
+			// loadRoundImagUrl(avatar,bean.headUrl);
+		}
+
+	}
 }

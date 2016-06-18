@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="130dp"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="@drawable/rect_round_grey"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/collect"
         style="@style/font_desc_black"
-        android:layout_width="match_parent"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/rect_grey"
         android:drawableLeft="@drawable/icon_collect"
         android:drawablePadding="5dp"
         android:paddingBottom="5dp"
@@ -18,16 +19,13 @@
         android:text="@string/collect"
         android:textSize="16sp" />
 
-    <View
-        style="@style/divider_style_hor"
-        android:layout_width="130dp"
-        android:layout_height="1px" />
 
     <TextView
         android:id="@+id/send_wish"
         style="@style/font_desc_black"
-        android:layout_width="match_parent"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/rect_grey"
         android:drawableLeft="@drawable/icon_sendwish"
         android:drawablePadding="5dp"
         android:paddingBottom="5dp"
@@ -36,16 +34,13 @@
         android:text="@string/send_wish"
         android:textSize="16sp" />
 
-    <View
-        style="@style/divider_style_hor"
-        android:layout_width="130dp"
-        android:layout_height="1px" />
-
 
     <TextView
+        android:id="@+id/tv_report"
         style="@style/font_desc_black"
-        android:layout_width="match_parent"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/rect_grey"
         android:drawableLeft="@drawable/icon_report"
         android:drawablePadding="5dp"
         android:paddingBottom="5dp"
@@ -54,41 +49,37 @@
         android:text="@string/report"
         android:textSize="16sp" />
 
-    <View
-        style="@style/divider_style_hor"
-        android:layout_width="130dp"
-        android:layout_height="1px" />
 
     <TextView
-        android:id="@+id/report"
+        android:id="@+id/tv_edit"
         style="@style/font_desc_black"
-        android:layout_width="match_parent"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/rect_grey"
         android:drawableLeft="@drawable/icon_edit"
         android:drawablePadding="5dp"
         android:paddingBottom="5dp"
         android:paddingLeft="16dp"
         android:paddingTop="5dp"
         android:text="@string/edit"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:visibility="gone" />
 
-    <View
-        style="@style/divider_style_hor"
-        android:layout_width="130dp"
-        android:layout_height="1px" />
 
     <TextView
-        android:id="@+id/delete"
+        android:id="@+id/tv_delete"
         style="@style/font_desc_black"
-        android:layout_width="match_parent"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/rect_grey"
         android:drawableLeft="@drawable/icon_delete"
         android:drawablePadding="5dp"
         android:paddingBottom="5dp"
         android:paddingLeft="16dp"
         android:paddingTop="5dp"
         android:text="@string/delete"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:visibility="gone" />
 
 
 </LinearLayout>

@@ -6,44 +6,42 @@ import android.widget.ToggleButton;
 
 import com.luohe.android.luohe.R;
 
-
 public class TagView extends ToggleButton {
 
-    private boolean mCheckEnable = true;
+	private boolean mCheckEnable = true;
 
-    public TagView(Context paramContext) {
-        super(paramContext);
-        init();
-    }
+	public TagView(Context paramContext) {
+		super(paramContext);
+		init();
+	}
 
-    public TagView(Context paramContext, AttributeSet paramAttributeSet) {
-        super(paramContext, paramAttributeSet);
-        init();
-    }
+	public TagView(Context paramContext, AttributeSet paramAttributeSet) {
+		super(paramContext, paramAttributeSet);
+		init();
+	}
 
-    public TagView(Context paramContext, AttributeSet paramAttributeSet,
-                   int paramInt) {
-        super(paramContext, paramAttributeSet, 0);
-        init();
-    }
+	public TagView(Context paramContext, AttributeSet paramAttributeSet, int paramInt) {
+		super(paramContext, paramAttributeSet, 0);
+		init();
+	}
 
-    private void init() {
-        setTextOn(null);
-        setTextOff(null);
-        setText("");
-        setBackgroundResource(R.drawable.rect_white_round);
-    }
+	private void init() {
+		setTextOn(null);
+		setTextOff(null);
+		setText("");
+		setBackgroundResource(R.drawable.rect_white_round);
+	}
 
-    public void setCheckEnable(boolean paramBoolean) {
-        this.mCheckEnable = paramBoolean;
-        if (!this.mCheckEnable) {
-            super.setChecked(false);
-        }
-    }
+	public void setCheckEnable(boolean paramBoolean) {
+		this.mCheckEnable = paramBoolean;
+		if (!this.mCheckEnable) {
+			super.setChecked(false);
+		}
+	}
 
-    public void setChecked(boolean paramBoolean) {
-        if (this.mCheckEnable) {
-            super.setChecked(paramBoolean);
-        }
-    }
+	public void setChecked(boolean paramBoolean) {
+		if (this.mCheckEnable) {
+			super.setChecked(paramBoolean);
+		}
+	}
 }

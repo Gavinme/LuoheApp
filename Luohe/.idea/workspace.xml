@@ -9,10 +9,9 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81e99bd3-5bd7-447f-b940-79ec7d31bd2d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    <list default="true" id="81e99bd3-5bd7-447f-b940-79ec7d31bd2d" name="Default" comment="-del">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
     </list>
     <ignored path="Luohe.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -64,6 +63,8 @@
                 <marker date="1466403305000" expanded="false" signature="628:667" placeholder="com.android.support:support-v4:22.2.1 [7946] [+1 extra dependencies, check tooltip]" />
                 <marker date="1466403305000" expanded="false" signature="680:721" placeholder="com.android.support:appcompat-v7:22.2.1 [5258] [+2 extra dependencies, check tooltip]" />
                 <marker date="1466403305000" expanded="false" signature="734:769" placeholder="com.android.support:design:22.2.1 [1806] [+3 extra dependencies, check tooltip]" />
+                <marker date="1466403305000" expanded="false" signature="782:824" placeholder="com.android.support:recyclerview-v7:25.0.1 [2350] [+3 extra dependencies, check tooltip]" />
+                <marker date="1466403305000" expanded="false" signature="837:875" placeholder="com.android.support:cardview-v7:25.0.1 [248] [+1 extra dependencies, check tooltip]" />
                 <marker date="1466403305000" expanded="false" signature="888:924" placeholder="org.simple:androideventbus:1.0.5.1 [150]" />
                 <marker date="1466403305000" expanded="false" signature="938:973" placeholder="com.jakewharton:butterknife:7.0.1 [342]" />
                 <marker date="1466403305000" expanded="false" signature="986:1050" placeholder="com.nostra13.universalimageloader:universal-image-loader:1.9.5 [1206]" />
@@ -71,9 +72,9 @@
                 <marker date="1466403305000" expanded="false" signature="1108:1138" placeholder="io.reactivex:rxandroid:1.0.1 [54] [+1 extra dependencies, check tooltip]" />
                 <marker date="1466403305000" expanded="false" signature="1151:1196" placeholder="com.squareup.retrofit2:retrofit:2.0.0-beta4 [512] [+2 extra dependencies, check tooltip]" />
                 <marker date="1466403305000" expanded="false" signature="1209:1260" placeholder="com.squareup.retrofit2:converter-gson:2.0.0-beta4 [31] [+4 extra dependencies, check tooltip]" />
-                <marker date="1466403305000" expanded="true" signature="1273:1324" placeholder="com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4 [82] [+4 extra dependencies, check tooltip]" />
+                <marker date="1466403305000" expanded="false" signature="1273:1324" placeholder="com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4 [82] [+4 extra dependencies, check tooltip]" />
                 <marker date="1466403305000" expanded="false" signature="1337:1385" placeholder="com.squareup.okhttp3:logging-interceptor:3.0.1 [65] [+2 extra dependencies, check tooltip]" />
-                <marker date="1466403305000" expanded="true" signature="1467:1517" placeholder="com.github.w446108264:XhsEmoticonsKeyboard:2.0.4 [547] [+2 extra dependencies, check tooltip]" />
+                <marker date="1466403305000" expanded="false" signature="1467:1517" placeholder="com.github.w446108264:XhsEmoticonsKeyboard:2.0.4 [547] [+2 extra dependencies, check tooltip]" />
                 <marker date="1466403305000" expanded="false" signature="1566:1608" placeholder="com.github.w446108264:AndroidEmoji:1.0.0 [56] [+2 extra dependencies, check tooltip]" />
                 <marker date="1466403305000" expanded="false" signature="1657:1696" placeholder="com.github.bumptech.glide:glide:3.7.0 [2879]" />
               </folding>
@@ -81,21 +82,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.3571428">
-              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="misc.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.475">
+              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -3693,6 +3684,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/luohe/android/luohe/recommond/CommentListFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/luohe/android/luohe/base/BaseRecyclerViewAdapter.java" />
         <option value="$PROJECT_DIR$/pickerview/.gitignore" />
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
         <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
@@ -3790,38 +3782,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="pickerview" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Luohe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Luohe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pickerview" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Luohe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Luohe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="openimSDK" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -3837,38 +3797,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="art" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Luohe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Luohe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value=".idea" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Luohe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Luohe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value=".idea" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libraries" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -4166,7 +4094,13 @@
       <option name="project" value="LOCAL" />
       <updated>1479462031723</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="-del">
+      <created>1479462136236</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1479462136236</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -4210,6 +4144,8 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="-del" />
     <option name="LAST_COMMIT_MESSAGE" value="-del" />
   </component>
@@ -4959,6 +4895,8 @@
             <marker date="1466403305000" expanded="false" signature="628:667" placeholder="com.android.support:support-v4:22.2.1 [7946] [+1 extra dependencies, check tooltip]" />
             <marker date="1466403305000" expanded="false" signature="680:721" placeholder="com.android.support:appcompat-v7:22.2.1 [5258] [+2 extra dependencies, check tooltip]" />
             <marker date="1466403305000" expanded="false" signature="734:769" placeholder="com.android.support:design:22.2.1 [1806] [+3 extra dependencies, check tooltip]" />
+            <marker date="1466403305000" expanded="false" signature="782:824" placeholder="com.android.support:recyclerview-v7:25.0.1 [2350] [+3 extra dependencies, check tooltip]" />
+            <marker date="1466403305000" expanded="false" signature="837:875" placeholder="com.android.support:cardview-v7:25.0.1 [248] [+1 extra dependencies, check tooltip]" />
             <marker date="1466403305000" expanded="false" signature="888:924" placeholder="org.simple:androideventbus:1.0.5.1 [150]" />
             <marker date="1466403305000" expanded="false" signature="938:973" placeholder="com.jakewharton:butterknife:7.0.1 [342]" />
             <marker date="1466403305000" expanded="false" signature="986:1050" placeholder="com.nostra13.universalimageloader:universal-image-loader:1.9.5 [1206]" />
@@ -4966,9 +4904,9 @@
             <marker date="1466403305000" expanded="false" signature="1108:1138" placeholder="io.reactivex:rxandroid:1.0.1 [54] [+1 extra dependencies, check tooltip]" />
             <marker date="1466403305000" expanded="false" signature="1151:1196" placeholder="com.squareup.retrofit2:retrofit:2.0.0-beta4 [512] [+2 extra dependencies, check tooltip]" />
             <marker date="1466403305000" expanded="false" signature="1209:1260" placeholder="com.squareup.retrofit2:converter-gson:2.0.0-beta4 [31] [+4 extra dependencies, check tooltip]" />
-            <marker date="1466403305000" expanded="true" signature="1273:1324" placeholder="com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4 [82] [+4 extra dependencies, check tooltip]" />
+            <marker date="1466403305000" expanded="false" signature="1273:1324" placeholder="com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4 [82] [+4 extra dependencies, check tooltip]" />
             <marker date="1466403305000" expanded="false" signature="1337:1385" placeholder="com.squareup.okhttp3:logging-interceptor:3.0.1 [65] [+2 extra dependencies, check tooltip]" />
-            <marker date="1466403305000" expanded="true" signature="1467:1517" placeholder="com.github.w446108264:XhsEmoticonsKeyboard:2.0.4 [547] [+2 extra dependencies, check tooltip]" />
+            <marker date="1466403305000" expanded="false" signature="1467:1517" placeholder="com.github.w446108264:XhsEmoticonsKeyboard:2.0.4 [547] [+2 extra dependencies, check tooltip]" />
             <marker date="1466403305000" expanded="false" signature="1566:1608" placeholder="com.github.w446108264:AndroidEmoji:1.0.0 [56] [+2 extra dependencies, check tooltip]" />
             <marker date="1466403305000" expanded="false" signature="1657:1696" placeholder="com.github.bumptech.glide:glide:3.7.0 [2879]" />
           </folding>
@@ -4977,16 +4915,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.3571428">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.475">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
           <folding />
         </state>
       </provider>

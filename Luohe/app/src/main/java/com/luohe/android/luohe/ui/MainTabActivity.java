@@ -125,12 +125,7 @@ public class MainTabActivity extends AppCompatActivity {
 							}
 						});
 					} else if (clazz == ChatTabFragment.class) {
-						loginHelper.doLogin(new LoginHelper.ILoginListener() {
-							@Override
-							public void onLogin() {
-								selectTab(clazz);
-							}
-						});
+						selectTab(clazz);
 					} else if (clazz == FindTabFragment.class) {
 						loginHelper.doLogin(new LoginHelper.ILoginListener() {
 							@Override

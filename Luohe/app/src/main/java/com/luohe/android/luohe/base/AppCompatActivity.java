@@ -36,9 +36,9 @@ public abstract class AppCompatActivity extends BaseActivity {
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.common_activity_layout);
-		if (mSetTint) {
-			StatuBarManager.setTintStyle(this);
-		}
+//		if (mSetTint) {
+//			StatuBarManager.setTintStyle(this);
+//		}
 		mRootView = (RelativeLayout) findViewById(R.id.root_view);
 		mTitlebar = (TitleBar) findViewById(R.id.title_bar);
 		mContentView = (FrameLayout) findViewById(R.id.content_view);
